@@ -1,0 +1,35 @@
+{
+  "id": "0b0412d5-5314-4d5f-a013-e328ee76bb3a",
+  "name": "choco-pack",
+  "friendlyName": "Chocolatey - Pack",
+  "description": "Runs Chocolatey Pack with specified parameters",
+  "author": "gep13",
+  "helpMarkDown": "",
+  "category": "Build",
+  "visibility": ["Build", "Release"],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "Chocolatey Pack",
+  "inputs": [
+    {
+      "name": "pathToNuSpec",
+      "type": "string",
+      "label": "Location of the NuSpec file that is to be packed.",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Location of the NuSpec file that is to packed."
+    }
+  ],
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\chocopack.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}

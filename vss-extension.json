@@ -1,0 +1,92 @@
+{
+  "manifestVersion": 1,
+  "id": "chocolatey-azuredevops",
+  "version": "0.1.0",
+  "name": "Chocolatey",
+  "description": "A set of Tasks related to using Chocolatey as part of your Azure DevOps Build Pipelines.",
+  "publisher": "gep13",
+  "public": false,
+  "icons": {
+    "default": "images/icon.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "readme.md"
+    }
+  },
+  "galleryFlags": ["Public"],
+  "tags": [
+    "chocolatey",
+    "choco",
+    "pack",
+    "push",
+    "package",
+    "publish",
+    "nuspec",
+    "nupkg",
+    "install",
+    "upgrade"
+  ],
+  "branding": {
+    "color": "rgb(220, 235, 252)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "Tasks/install"
+    },
+    {
+      "path": "Tasks/pack"
+    },
+    {
+      "path": "Tasks/push"
+    },
+    {
+      "path": "Tasks/upgrade"
+    }
+  ],
+  "categories": ["Build and release"],
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/gep13/chocolatey-azuredevops"
+  },
+  "contributions": [
+    {
+      "id": "chocolatey-azuredevops-install",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "Tasks/install"
+      }
+    },
+    {
+      "id": "chocolatey-azuredevops-pack",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "Tasks/pack"
+      }
+    },
+    {
+      "id": "chocolatey-azuredevops-push",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "Tasks/push"
+      }
+    },
+    {
+      "id": "chocolatey-azuredevops-upgrade",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "Tasks/upgrade"
+      }
+    }
+  ]
+}
