@@ -6,7 +6,10 @@
   "author": "gep13",
   "helpMarkDown": "",
   "category": "Build",
-  "visibility": ["Build", "Release"],
+  "visibility": [
+    "Build",
+    "Release"
+  ],
   "demands": [],
   "version": {
     "Major": "0",

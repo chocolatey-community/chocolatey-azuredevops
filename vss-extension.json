@@ -19,7 +19,9 @@
       "path": "readme.md"
     }
   },
-  "galleryFlags": ["Public"],
+  "galleryFlags": [
+    "Public"
+  ],
   "tags": [
     "chocolatey",
     "choco",
@@ -50,7 +52,9 @@
       "path": "Tasks/upgrade"
     }
   ],
-  "categories": ["Build and release"],
+  "categories": [
+    "Build and release"
+  ],
   "repository": {
     "type": "git",
     "uri": "https://github.com/gep13/chocolatey-azuredevops"
@@ -58,7 +62,9 @@
   "contributions": [
     {
       "id": "chocolatey-azuredevops-install",
-      "targets": ["ms.vss-distributed-task.tasks"],
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
       "type": "ms.vss-distributed-task.task",
       "properties": {
         "name": "Tasks/install"
@@ -66,7 +72,9 @@
     },
     {
       "id": "chocolatey-azuredevops-pack",
-      "targets": ["ms.vss-distributed-task.tasks"],
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
       "type": "ms.vss-distributed-task.task",
       "properties": {
         "name": "Tasks/pack"
@@ -74,7 +82,9 @@
     },
     {
       "id": "chocolatey-azuredevops-push",
-      "targets": ["ms.vss-distributed-task.tasks"],
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
       "type": "ms.vss-distributed-task.task",
       "properties": {
         "name": "Tasks/push"
@@ -82,7 +92,9 @@
     },
     {
       "id": "chocolatey-azuredevops-upgrade",
-      "targets": ["ms.vss-distributed-task.tasks"],
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
       "type": "ms.vss-distributed-task.task",
       "properties": {
         "name": "Tasks/upgrade"
