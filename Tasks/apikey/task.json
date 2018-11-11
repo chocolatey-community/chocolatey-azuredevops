@@ -1,0 +1,80 @@
+{
+  "id": "7c5f5405-6950-441b-86f0-8720d732ca94",
+  "name": "choco-apikey",
+  "friendlyName": "Chocolatey - ApiKey",
+  "description": "Runs Chocolatey ApiKey with specified parameters",
+  "author": "gep13",
+  "helpMarkDown": "",
+  "category": "Build",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "groups": [
+    {
+        "name": "advanced",
+        "displayName": "Advanced options",
+        "isExpanded": false
+    }
+  ],
+  "instanceNameFormat": "Chocolatey ApiKey",
+  "inputs": [
+    {
+      "name": "source",
+      "type": "string",
+      "label": "Source",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The source that is associated with the ApiKey."
+    },
+    {
+      "name": "apikey",
+      "type": "string",
+      "label": "ApiKey",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The ApiKey that should be used when pushing to the source."
+    },
+    {
+      "name": "debug",
+      "type": "boolean",
+      "label": "Show debug messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "",
+      "groupname": "advanced"
+    },
+    {
+      "name": "verbose",
+      "type": "boolean",
+      "label": "Show verbose messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Very verbose messaging, avoid using under normal circumstances.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "trace",
+      "type": "boolean",
+      "label": "Show trace messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Very, very verbose trace messaging. Avoid except when needing super low-level .NET Framework debugging.",
+      "groupname": "advanced"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "$(currentDirectory)\\apikey.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}
