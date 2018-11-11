@@ -1,0 +1,159 @@
+{
+  "id": "d9331f3c-0bb3-4987-8eee-e2296f172818",
+  "name": "choco-upgrade",
+  "friendlyName": "Chocolatey - Upgrade",
+  "description": "Runs Chocolatey Upgrade with specified parameters",
+  "author": "gep13",
+  "helpMarkDown": "",
+  "category": "Build",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "groups": [
+    {
+        "name": "advanced",
+        "displayName": "Advanced options",
+        "isExpanded": false
+    }
+  ],
+  "instanceNameFormat": "Chocolatey Upgrade",
+  "inputs": [
+    {
+      "name": "packageId",
+      "type": "string",
+      "label": "The id of the package(s) that are to be installed.",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "For example, windirstat."
+    },
+    {
+      "name": "packageVersion",
+      "type": "string",
+      "label": "The version of the package that is to be installed.",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "For example, 1.2.3."
+    },
+    {
+      "name": "pre",
+      "type": "boolean",
+      "label": "Prerelease.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Include Prereleases?"
+    },
+    {
+      "name": "source",
+      "type": "string",
+      "label": "The source to find the package(s) to install.",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Special sources include: ruby, webpi, cygwin, windowsfeatures, and python. To specify more than one source, pass it with a semi-colon separating the values (e.g. \"'source1;source2'\"). Defaults to default feeds."
+    },
+    {
+      "name": "except",
+      "type": "string",
+      "label": "Except.",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "A comma-separated list of package names that should not be upgraded when upgrading 'all'.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "installargs",
+      "type": "string",
+      "label": "Install Arguments",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Install Arguments to pass to the native installer in the package.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "params",
+      "type": "string",
+      "label": "Package Parameters",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Parameters to pass to the package.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "force",
+      "type": "boolean",
+      "label": "Force the behavior.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Do not use force during normal operation - it subverts some of the smart behavior for commands.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "x86",
+      "type": "boolean",
+      "label": "Force X86.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Force x86 (32bit) installation on 64 bit systems.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "override",
+      "type": "boolean",
+      "label": "Override Arguments",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Should install arguments be used exclusively without appending to current package passed arguments?",
+      "groupname": "advanced"
+    },
+    {
+      "name": "debug",
+      "type": "boolean",
+      "label": "Show debug messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "",
+      "groupname": "advanced"
+    },
+    {
+      "name": "verbose",
+      "type": "boolean",
+      "label": "Show verbose messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Very verbose messaging, avoid using under normal circumstances.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "trace",
+      "type": "boolean",
+      "label": "Show trace messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Very, very verbose trace messaging. Avoid except when needing super low-level .NET Framework debugging.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "extraArguments",
+      "type": "string",
+      "label": "Extra Arguments",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Additional Chocolatey Arguments that are not catered for above.",
+      "groupname": "advanced"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "$(currentDirectory)\\upgrade.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}
