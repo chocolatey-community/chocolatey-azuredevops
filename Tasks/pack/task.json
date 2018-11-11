@@ -29,8 +29,8 @@
     }
   ],
   "execution": {
-    "PowerShell": {
-      "target": "$(currentDirectory)\\chocopack.ps1",
+    "PowerShell3": {
+      "target": "$(currentDirectory)\\pack.ps1",
       "argumentFormat": "",
       "workingDirectory": "$(currentDirectory)"
     }
