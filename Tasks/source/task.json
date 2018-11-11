@@ -1,0 +1,153 @@
+{
+  "id": "31733402-f948-4561-a4c9-3a3d43e2854c",
+  "name": "choco-source",
+  "friendlyName": "Chocolatey - Source",
+  "description": "Runs Chocolatey Source with specified parameters",
+  "author": "gep13",
+  "helpMarkDown": "",
+  "category": "Build",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "groups": [
+    {
+        "name": "advanced",
+        "displayName": "Advanced options",
+        "isExpanded": false
+    }
+  ],
+  "instanceNameFormat": "Chocolatey Source",
+  "inputs": [
+    {
+      "name": "operation",
+      "type": "radio",
+      "label": "Source Operation",
+      "required": true,
+      "defaultValue": "add",
+      "helpMarkDown": "Choose whether to add, remove, enable or disable a source.",
+      "options": {
+        "add": "Add a source",
+        "remove": "Remove a source",
+        "enable": "Enable a source",
+        "disable": "Disable a source"
+      }
+    },
+    {
+      "name": "sourceName",
+      "type": "string",
+      "label": "Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The name to give the Source."
+    },
+    {
+      "name": "source",
+      "type": "string",
+      "label": "Source",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The name to give the Source.",
+      "visibleRule": "operation=add"
+    },
+    {
+      "name": "priority",
+      "type": "string",
+      "label": "Priority",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The priority order of this source as compared to other sources, lower is better. Defaults to 0 (no priority). All priorities above 0 will be evaluated first, then zero-based values will be evaluated in config file order."
+    },
+    {
+      "name": "user",
+      "type": "string",
+      "label": "User",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Used with authenticated feeds."
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "label": "Password",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The user's password to the source. Encrypted in chocolatey.config file."
+    },
+    {
+      "name": "cert",
+      "type": "string",
+      "label": "Client Certificate",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "PFX pathname for an x509 authenticated feeds."
+    },
+    {
+      "name": "certpassword",
+      "type": "string",
+      "label": "Certificate Password",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "the client certificate's password to the source."
+    },
+    {
+      "name": "debug",
+      "type": "boolean",
+      "label": "Show debug messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "",
+      "groupname": "advanced"
+    },
+    {
+      "name": "verbose",
+      "type": "boolean",
+      "label": "Show verbose messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Very verbose messaging, avoid using under normal circumstances.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "trace",
+      "type": "boolean",
+      "label": "Show trace messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Very, very verbose trace messaging. Avoid except when needing super low-level .NET Framework debugging.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "bypassproxy",
+      "type": "boolean",
+      "label": "Bypass Proxy.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Should this source explicitly bypass any explicitly or system configured proxies?",
+      "groupname": "advanced"
+    },
+    {
+      "name": "extraArguments",
+      "type": "string",
+      "label": "Extra Arguments",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Additional Chocolatey Arguments that are not catered for above.",
+      "groupname": "advanced"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "$(currentDirectory)\\source.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}
