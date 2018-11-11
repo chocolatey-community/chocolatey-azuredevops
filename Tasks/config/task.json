@@ -1,0 +1,104 @@
+{
+  "id": "f3b522f8-3419-4065-b2f2-2f744fecd2ec",
+  "name": "choco-config",
+  "friendlyName": "Chocolatey - Config",
+  "description": "Runs Chocolatey Config with specified parameters",
+  "author": "gep13",
+  "helpMarkDown": "",
+  "category": "Build",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "groups": [
+    {
+        "name": "advanced",
+        "displayName": "Advanced options",
+        "isExpanded": false
+    }
+  ],
+  "instanceNameFormat": "Chocolatey Config",
+  "inputs": [
+    {
+      "name": "operation",
+      "type": "radio",
+      "label": "Config Operation",
+      "required": true,
+      "defaultValue": "set",
+      "helpMarkDown": "Choose whether to set or unset a config value.",
+      "options": {
+        "set": "Set Value",
+        "unset": "Unset Value"
+      }
+    },
+    {
+      "name": "configName",
+      "type": "pickList",
+      "label": "Config Name",
+      "defaultValue": "",
+      "options": {
+        "cacheLocation": "Cache Location",
+        "containsLegacyPackageInstalls": "Contains Legacy Package Installs",
+        "commandExecutionTimeoutSeconds": "Command Execution Timeout",
+        "proxy": "Proxy",
+        "proxyUser": "Proxy User",
+        "proxyPassword": "Proxy Password",
+        "webRequestTimeoutSeconds": "Web Request Timeout",
+        "proxyBypassList": "Proxy Bypass List",
+        "proxyBypassOnLocal": "Proxy Bypass On Local"
+      },
+      "required": true,
+      "helpMarkDown": "The config name which is going to set or unset."
+    },
+    {
+      "name": "configValue",
+      "type": "string",
+      "label": "Config Value",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Parameters to pass to the package.",
+      "visibleRule": "operation=set"
+    },
+    {
+      "name": "debug",
+      "type": "boolean",
+      "label": "Show debug messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "",
+      "groupname": "advanced"
+    },
+    {
+      "name": "verbose",
+      "type": "boolean",
+      "label": "Show verbose messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Very verbose messaging, avoid using under normal circumstances.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "trace",
+      "type": "boolean",
+      "label": "Show trace messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Very, very verbose trace messaging. Avoid except when needing super low-level .NET Framework debugging.",
+      "groupname": "advanced"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "$(currentDirectory)\\config.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}
