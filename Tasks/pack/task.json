@@ -17,15 +17,139 @@
     "Patch": "0"
   },
   "minimumAgentVersion": "1.83.0",
+  "groups": [
+    {
+      "name": "advanced",
+      "displayName": "Advanced options",
+      "isExpanded": false
+    }
+  ],
   "instanceNameFormat": "Chocolatey Pack",
   "inputs": [
     {
-      "name": "pathToNuSpec",
+      "name": "operation",
+      "type": "radio",
+      "label": "How many nuspec files?",
+      "required": true,
+      "defaultValue": "single",
+      "helpMarkDown": "Choose whether to pack a single nuspec file, or multiple.",
+      "options": {
+        "single": "One nuspec file",
+        "multiple": "Multiple nuspec files"
+      }
+    },
+    {
+      "name": "workingDirectory",
       "type": "string",
-      "label": "Location of the NuSpec file that is to be packed.",
+      "label": "Working Directory",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Location of the NuSpec file that is to packed."
+      "helpMarkDown": "The location of the nuspec file(s)."
+    },
+    {
+      "name": "nuspecFileName",
+      "type": "string",
+      "label": "NuSpec File Name.",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The file name of the NuSpec File that should be packed.",
+      "visibleRule": "operation=single"
+    },
+    {
+      "name": "version",
+      "type": "string",
+      "label": "Version",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The version you would like to insert into the package."
+    },
+    {
+      "name": "outputDirectory",
+      "type": "string",
+      "label": "Output Directory",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The location where the generated nupkg(s) should be placed."
+    },
+    {
+      "name": "pushPackages",
+      "type": "boolean",
+      "label": "Push generated nupkg(s).",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Should the generated nupkg(s) also be pushed to the "
+    },
+    {
+      "name": "source",
+      "type": "string",
+      "label": "Source",
+      "defaultValue": "https://push.chocolatey.org/",
+      "required": false,
+      "helpMarkDown": "The source to push the generated nupkg(s) to.",
+      "visibleRule": "pushPackages=true"
+    },
+    {
+      "name": "apikey",
+      "type": "string",
+      "label": "API Key",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The API Key that should be used to push the nupkg(s) to specified source.",
+      "visibleRule": "pushPackages=true"
+    },
+    {
+      "name": "force",
+      "type": "boolean",
+      "label": "Force.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Force the operation to continue.",
+      "visibleRule": "pushPackages=true"
+    },
+    {
+      "name": "timeout",
+      "type": "string",
+      "label": "Timeout",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The time, in seconds, to allow a package push to occur before timing out.",
+      "visibleRule": "pushPackages=true"
+    },
+    {
+      "name": "debug",
+      "type": "boolean",
+      "label": "Show debug messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "",
+      "groupname": "advanced"
+    },
+    {
+      "name": "verbose",
+      "type": "boolean",
+      "label": "Show verbose messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Very verbose messaging, avoid using under normal circumstances.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "trace",
+      "type": "boolean",
+      "label": "Show trace messaging.",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Very, very verbose trace messaging. Avoid except when needing super low-level .NET Framework debugging.",
+      "groupname": "advanced"
+    },
+    {
+      "name": "extraArguments",
+      "type": "string",
+      "label": "Extra Arguments",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Additional Chocolatey Arguments that are not catered for above.",
+      "groupname": "advanced"
     }
   ],
   "execution": {
