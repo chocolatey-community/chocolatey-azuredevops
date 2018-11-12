@@ -51,7 +51,7 @@ try {
   }
 
   if($pre) {
-    Write-Output "Adding --pre version to arguments"
+    Write-Output "Adding --pre to arguments"
     $chocolateyArguments += @("--pre", "")
   }
 
@@ -66,27 +66,27 @@ try {
   }
 
   if($force) {
-    Write-Output "Adding --force version to arguments"
+    Write-Output "Adding --force to arguments"
     $chocolateyArguments += @("--force", "")
   }
 
   if($x86) {
-    Write-Output "Adding --x86 version to arguments"
+    Write-Output "Adding --x86 to arguments"
     $chocolateyArguments += @("--x86", "")
   }
 
   if($installArgs) {
-    Write-Output "Adding --install-arguments version to arguments"
+    Write-Output "Adding --install-arguments to arguments"
     $chocolateyArguments += @("--install-arguments", $installArgs)
   }
 
   if($override) {
-    Write-Output "Adding --override-arguments version to arguments"
+    Write-Output "Adding --override-arguments to arguments"
     $chocolateyArguments += @("--override-arguments", "")
   }
 
   if($params) {
-    Write-Output "Adding --package-parameters version to arguments"
+    Write-Output "Adding --package-parameters to arguments"
     $chocolateyArguments += @("--package-parameters", $params)
   }
 
@@ -96,17 +96,17 @@ try {
   }
 
   if($debug) {
-    Write-Output "Adding --debug version to arguments"
+    Write-Output "Adding --debug to arguments"
     $chocolateyArguments += @("--debug", "")
   }
 
   if($verbose) {
-    Write-Output "Adding --verbose version to arguments"
+    Write-Output "Adding --verbose to arguments"
     $chocolateyArguments += @("--verbose", "")
   }
 
   if($trace) {
-    Write-Output "Adding --trace version to arguments"
+    Write-Output "Adding --trace to arguments"
     $chocolateyArguments += @("--trace", "")
   }
 
