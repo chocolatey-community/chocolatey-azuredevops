@@ -31,17 +31,17 @@ try {
   $chocolateyArguments += @("--api-key", $apikey)
 
   if($debug) {
-    Write-Output "Adding --debug version to arguments"
+    Write-Output "Adding --debug to arguments"
     $chocolateyArguments += @("--debug", "")
   }
 
   if($verbose) {
-    Write-Output "Adding --verbose version to arguments"
+    Write-Output "Adding --verbose to arguments"
     $chocolateyArguments += @("--verbose", "")
   }
 
   if($trace) {
-    Write-Output "Adding --trace version to arguments"
+    Write-Output "Adding --trace to arguments"
     $chocolateyArguments += @("--trace", "")
   }
 
