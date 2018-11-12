@@ -36,42 +36,42 @@ try {
   $chocolateyArguments += @("--name", $sourceName)
 
   if($priority) {
-    Write-Output "Adding --priority version to arguments"
+    Write-Output "Adding --priority to arguments"
     $chocolateyArguments += @("--priority", $priority)
   }
 
   if($user) {
-    Write-Output "Adding --user version to arguments"
+    Write-Output "Adding --user to arguments"
     $chocolateyArguments += @("--user", $user)
   }
 
   if($password) {
-    Write-Output "Adding --password version to arguments"
+    Write-Output "Adding --password to arguments"
     $chocolateyArguments += @("--password", $password)
   }
 
   if($cert) {
-    Write-Output "Adding --cert version to arguments"
+    Write-Output "Adding --cert to arguments"
     $chocolateyArguments += @("--cert", $cert)
   }
 
   if($certpassword) {
-    Write-Output "Adding --certpassword version to arguments"
+    Write-Output "Adding --certpassword to arguments"
     $chocolateyArguments += @("--certpassword", $certpassword)
   }
 
   if($debug) {
-    Write-Output "Adding --debug version to arguments"
+    Write-Output "Adding --debug to arguments"
     $chocolateyArguments += @("--debug", "")
   }
 
   if($verbose) {
-    Write-Output "Adding --verbose version to arguments"
+    Write-Output "Adding --verbose to arguments"
     $chocolateyArguments += @("--verbose", "")
   }
 
   if($trace) {
-    Write-Output "Adding --trace version to arguments"
+    Write-Output "Adding --trace to arguments"
     $chocolateyArguments += @("--trace", "")
   }
 
