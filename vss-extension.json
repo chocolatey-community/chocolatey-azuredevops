@@ -44,123 +44,19 @@
   },
   "contributions": [
     {
-      "id": "chocolatey-azuredevops-apikey",
+      "id": "chocolatey-azuredevops",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "type": "ms.vss-distributed-task.task",
       "properties": {
-        "name": "Tasks/apikey"
-      }
-    },
-    {
-      "id": "chocolatey-azuredevops-config",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "type": "ms.vss-distributed-task.task",
-      "properties": {
-        "name": "Tasks/config"
-      }
-    },
-    {
-      "id": "chocolatey-azuredevops-custom",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "type": "ms.vss-distributed-task.task",
-      "properties": {
-        "name": "Tasks/custom"
-      }
-    },
-    {
-      "id": "chocolatey-azuredevops-feature",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "type": "ms.vss-distributed-task.task",
-      "properties": {
-        "name": "Tasks/feature"
-      }
-    },
-    {
-      "id": "chocolatey-azuredevops-install",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "type": "ms.vss-distributed-task.task",
-      "properties": {
-        "name": "Tasks/install"
-      }
-    },
-    {
-      "id": "chocolatey-azuredevops-pack",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "type": "ms.vss-distributed-task.task",
-      "properties": {
-        "name": "Tasks/pack"
-      }
-    },
-    {
-      "id": "chocolatey-azuredevops-push",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "type": "ms.vss-distributed-task.task",
-      "properties": {
-        "name": "Tasks/push"
-      }
-    },
-    {
-      "id": "chocolatey-azuredevops-source",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "type": "ms.vss-distributed-task.task",
-      "properties": {
-        "name": "Tasks/source"
-      }
-    },
-    {
-      "id": "chocolatey-azuredevops-upgrade",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "type": "ms.vss-distributed-task.task",
-      "properties": {
-        "name": "Tasks/upgrade"
+        "name": "Tasks/chocolatey"
       }
     }
   ],
   "files": [
     {
-      "path": "Tasks/apikey"
-    },
-    {
-      "path": "Tasks/config"
-    },
-    {
-      "path": "Tasks/custom"
-    },
-    {
-      "path": "Tasks/feature"
-    },
-    {
-      "path": "Tasks/install"
-    },
-    {
-      "path": "Tasks/pack"
-    },
-    {
-      "path": "Tasks/push"
-    },
-    {
-      "path": "Tasks/source"
-    },
-    {
-      "path": "Tasks/upgrade"
+      "path": "Tasks/chocolatey"
     }
   ]
 }

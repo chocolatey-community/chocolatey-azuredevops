@@ -87,7 +87,7 @@ Task("Update-Json-Versions")
         { "version", parameters.Version.SemVersion }
     });
 
-    var taskJson = "Tasks/pack/task.json";
+    var taskJson = "Tasks/chocolatey/task.json";
     Information("Updating {0} version -> {1}", taskJson, parameters.Version.SemVersion);
 
     TransformConfig(taskJson, taskJson, new TransformationCollection {
