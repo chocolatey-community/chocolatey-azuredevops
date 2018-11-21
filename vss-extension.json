@@ -34,7 +34,12 @@
     "support": {
         "uri": "https://github.com/gep13/chocolatey-azuredevops/issues"
     }
-},
+  },
+  "screenshots": [
+    {
+      "path": "images/task.png"
+    }
+  ],
   "content": {
     "details": {
       "path": "readme.md"
