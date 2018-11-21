@@ -175,7 +175,6 @@ try {
       [string]$packWorkingDirectory = Get-VstsInput -Name 'packWorkingDirectory' -Require
       [string]$packVersion = Get-VstsInput -Name 'packVersion'
       [string]$packOutputDirectory = Get-VstsInput -Name 'packOutputDirectory'
-      [bool]$pushPackages = Get-VstsInput -Name 'pushPackages' -AsBool
 
       if($packVersion) {
         Write-Output "Adding --version to arguments"
@@ -189,37 +188,7 @@ try {
         $chocolateyArguments.Add($packOutputDirectory) > $null
       }
 
-      if($pushPackages) {
-        [string]$packSource = Get-VstsInput -Name 'packSource' -Default 'https://push.chocolatey.org/'
-        [string]$packApikey = Get-VstsInput -Name 'packApikey'
-        [bool]$packForce = Get-VstsInput -Name 'packForce' -AsBool -Default $false
-        [string]$packTimeout = Get-VstsInput -Name 'packTimeout'
-
-        if($packSource) {
-          Write-Output "Adding --source to arguments"
-          $chocolateyArguments.Add("--source") > $null
-          $chocolateyArguments.Add($packSource) > $null
-        }
-
-        if($packApikey) {
-          Write-Output "Adding --apikey to arguments"
-          $chocolateyArguments.Add("--apikey") > $null
-          $chocolateyArguments.Add($packApikey) > $null
-        }
-
-        if($packForce) {
-          Write-Output "Adding --force to arguments"
-          $chocolateyArguments.Add("--force") > $null
-        }
-
-        if($packTimeout) {
-          Write-Output "Adding -t to arguments"
-          $chocolateyArguments.Add("-t") > $null
-          $chocolateyArguments.Add($packTimeout) > $null
-        }
-
-        $commandName = "pack"
-      }
+      $commandName = "pack"
     }
     "push"
     {
@@ -419,6 +388,7 @@ try {
 
     Remove-Item "\*.nupkg"
 
+    # TODO: Need to add a globber pattern here for finding all nuspec's
     if($packOperation -eq "single") {
       [string]$packNuspecFileName = Get-VstsInput -Name 'packNuspecFileName' -Require
       & $chocoExe $commandName $packNuspecFileName $($chocolateyArguments)
@@ -428,20 +398,10 @@ try {
         & $chocoExe $commandName $nuspecFile $($chocolateyArguments)
       }
     }
-
-    if($pushPackages) {
-      if($outputDirectory){
-        Set-Location $outputDirectory
-      }
-
-      $nupkgFiles = Get-ChildItem "*.nupkg"
-      foreach($nupkgFile in $nupkgFiles) {
-        & $chocoExe push $nupkgFile $($chocolateyArguments)
-      }
-    }
   } elseif($commandName -eq 'push') {
     Set-Location $pushWorkingDirectory
 
+    # TODO: Need to add a globber patter here for finding all nupkg's
     if($pushOperation -eq "single") {
       [string]$pushNupkgFileName = Get-VstsInput -Name 'pushNupkgFileName' -Require
       & $chocoExe $commandName $pushNupkgFileName $($chocolateyArguments)

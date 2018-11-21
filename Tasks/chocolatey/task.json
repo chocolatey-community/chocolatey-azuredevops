@@ -359,9 +359,9 @@
     },
     {
       "name": "packWorkingDirectory",
-      "type": "string",
+      "type": "filePath",
       "label": "Working Directory",
-      "defaultValue": "",
+      "defaultValue": "$(Build.Repository.LocalPath)",
       "required": true,
       "helpMarkDown": "The location of the nuspec file(s).",
       "groupName": "packOptions"
@@ -387,60 +387,11 @@
     },
     {
       "name": "packOutputDirectory",
-      "type": "string",
+      "type": "filePath",
       "label": "Output Directory",
-      "defaultValue": "",
+      "defaultValue": "$(Build.ArtifactStagingDirectory)",
       "required": false,
       "helpMarkDown": "The location where the generated nupkg(s) should be placed.",
-      "groupName": "packOptions"
-    },
-    {
-      "name": "pushPackages",
-      "type": "boolean",
-      "label": "Push generated nupkg(s).",
-      "defaultValue": "false",
-      "required": false,
-      "helpMarkDown": "Should the generated nupkg(s) also be pushed to the specified source?",
-      "groupName": "packOptions"
-    },
-    {
-      "name": "packSource",
-      "type": "string",
-      "label": "Source",
-      "defaultValue": "https://push.chocolatey.org/",
-      "required": false,
-      "helpMarkDown": "The source to push the generated nupkg(s) to.",
-      "visibleRule": "pushPackages=true",
-      "groupName": "packOptions"
-    },
-    {
-      "name": "packApikey",
-      "type": "string",
-      "label": "API Key",
-      "defaultValue": "",
-      "required": false,
-      "helpMarkDown": "The API Key that should be used to push the nupkg(s) to specified source.",
-      "visibleRule": "pushPackages=true",
-      "groupName": "packOptions"
-    },
-    {
-      "name": "packForce",
-      "type": "boolean",
-      "label": "Force.",
-      "defaultValue": "false",
-      "required": false,
-      "helpMarkDown": "Force the operation to continue.",
-      "visibleRule": "pushPackages=true",
-      "groupName": "packOptions"
-    },
-    {
-      "name": "packTimeout",
-      "type": "string",
-      "label": "Timeout",
-      "defaultValue": "",
-      "required": false,
-      "helpMarkDown": "The time, in seconds, to allow a package push to occur before timing out.",
-      "visibleRule": "pushPackages=true",
       "groupName": "packOptions"
     },
     {
@@ -458,9 +409,9 @@
     },
     {
       "name": "pushWorkingDirectory",
-      "type": "string",
+      "type": "filePath",
       "label": "Working Directory",
-      "defaultValue": "",
+      "defaultValue": "$(Build.ArtifactStagingDirectory)",
       "required": true,
       "helpMarkDown": "The location of the nupkg file(s).",
       "groupName": "pushOptions"
