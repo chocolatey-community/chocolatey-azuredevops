@@ -21,6 +21,20 @@
     "color": "rgb(220, 235, 252)",
     "theme": "light"
   },
+  "links": {
+    "learn": {
+        "uri": "https://gep13.github.io/chocolatey-azuredevops/"
+    },
+    "license": {
+        "uri": "https://github.com/gep13/chocolatey-azuredevops/blob/develop/LICENSE"
+    },
+    "repository": {
+        "uri": "https://github.com/gep13/chocolatey-azuredevops"
+    },
+    "support": {
+        "uri": "https://github.com/gep13/chocolatey-azuredevops/issues"
+    }
+},
   "content": {
     "details": {
       "path": "readme.md"
