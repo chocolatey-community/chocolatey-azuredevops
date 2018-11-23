@@ -22,6 +22,8 @@ For more information about [Chocolatey](https://chocolatey.org/), please see the
 
 This extension contains only a single Task, which is capable of executing the following Chocolatey Commands:
 
+**NOTE:** This Azure DevOps Task assumes that Chocolatey is already installed on the Build Agent that is running the build.  If Chocolatey is not located on the Build Agent, an error will be thrown, and the task will fail.
+
 * apikey
 * config
 * custom
