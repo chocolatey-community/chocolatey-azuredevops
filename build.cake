@@ -123,7 +123,7 @@ Task("Publish-GitHub-Release")
     .Does(() =>
 {
     var buildResultDir = Directory("./build-results");
-    var packageFile = File("cake-build.cake-" + parameters.Version.SemVersion + ".vsix");
+    var packageFile = File("gep13.chocolatey-azuredevops-" + parameters.Version.SemVersion + ".vsix");
 
     GitReleaseManagerAddAssets(parameters.GitHub.UserName, parameters.GitHub.Password, "gep13", "chocolatey-azuredevops", parameters.Version.Milestone, buildResultDir + packageFile);
     GitReleaseManagerClose(parameters.GitHub.UserName, parameters.GitHub.Password, "gep13", "chocolatey-azuredevops", parameters.Version.Milestone);
@@ -140,7 +140,7 @@ Task("Publish-Extension")
     .Does(() =>
 {
     var buildResultDir = Directory("./build-results");
-    var packageFile = File("cake-build.cake-" + parameters.Version.SemVersion + ".vsix");
+    var packageFile = File("gep13.chocolatey-azuredevops-" + parameters.Version.SemVersion + ".vsix");
 
     TfxExtensionPublish(buildResultDir + packageFile, new TfxExtensionPublishSettings()
     {
