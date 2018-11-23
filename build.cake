@@ -10,7 +10,7 @@
 // TOOLS
 //////////////////////////////////////////////////////////////////////
 
-#tool "nuget:?package=gitreleasemanager&version=0.6.0"
+#tool "nuget:?package=gitreleasemanager&version=0.7.1"
 #tool "nuget:?package=GitVersion.CommandLine&version=3.6.4"
 
 // Load other scripts.
@@ -37,12 +37,12 @@ Setup(context =>
     );
 
     // Increase verbosity?
-    if(parameters.IsMasterCakeVsoBranch && (context.Log.Verbosity != Verbosity.Diagnostic)) {
+    if(parameters.IsMasterBranch && (context.Log.Verbosity != Verbosity.Diagnostic)) {
         Information("Increasing verbosity to diagnostic.");
         context.Log.Verbosity = Verbosity.Diagnostic;
     }
 
-    Information("Building version {0} of cake-vso ({1}, {2}) using version {3} of Cake. (IsTagged: {4})",
+    Information("Building version {0} of chocolatey-azuredevops ({1}, {2}) using version {3} of Cake. (IsTagged: {4})",
         parameters.Version.SemVersion,
         parameters.Configuration,
         parameters.Target,
@@ -69,7 +69,7 @@ Task("Install-Tfx-Cli")
 Task("Create-Release-Notes")
     .Does(() =>
 {
-    GitReleaseManagerCreate(parameters.GitHub.UserName, parameters.GitHub.Password, "cake-build", "cake-vso", new GitReleaseManagerCreateSettings {
+    GitReleaseManagerCreate(parameters.GitHub.UserName, parameters.GitHub.Password, "gep13", "chocolatey-azuredevops", new GitReleaseManagerCreateSettings {
         Milestone         = parameters.Version.Milestone,
         Name              = parameters.Version.Milestone,
         Prerelease        = true,
@@ -125,8 +125,8 @@ Task("Publish-GitHub-Release")
     var buildResultDir = Directory("./build-results");
     var packageFile = File("cake-build.cake-" + parameters.Version.SemVersion + ".vsix");
 
-    GitReleaseManagerAddAssets(parameters.GitHub.UserName, parameters.GitHub.Password, "cake-build", "cake-vso", parameters.Version.Milestone, buildResultDir + packageFile);
-    GitReleaseManagerClose(parameters.GitHub.UserName, parameters.GitHub.Password, "cake-build", "cake-vso", parameters.Version.Milestone);
+    GitReleaseManagerAddAssets(parameters.GitHub.UserName, parameters.GitHub.Password, "gep13", "chocolatey-azuredevops", parameters.Version.Milestone, buildResultDir + packageFile);
+    GitReleaseManagerClose(parameters.GitHub.UserName, parameters.GitHub.Password, "gep13", "chocolatey-azuredevops", parameters.Version.Milestone);
 })
 .OnError(exception =>
 {

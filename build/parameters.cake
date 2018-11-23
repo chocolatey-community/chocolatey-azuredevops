@@ -9,8 +9,8 @@ public class BuildParameters
     public bool IsRunningOnWindows { get; private set; }
     public bool IsRunningOnAppVeyor { get; private set; }
     public bool IsPullRequest { get; private set; }
-    public bool IsMasterCakeVsoRepo { get; private set; }
-    public bool IsMasterCakeVsoBranch { get; private set; }
+    public bool IsMasterRepo { get; private set; }
+    public bool IsMasterBranch { get; private set; }
     public bool IsTagged { get; private set; }
     public bool IsPublishBuild { get; private set; }
     public bool IsReleaseBuild { get; private set; }
@@ -23,8 +23,8 @@ public class BuildParameters
     {
         get
         {
-            return !IsLocalBuild && !IsPullRequest && IsMasterCakeVsoRepo
-                && IsMasterCakeVsoBranch && IsTagged;
+            return !IsLocalBuild && !IsPullRequest && IsMasterRepo
+                && IsMasterBranch && IsTagged;
         }
     }
 
@@ -53,8 +53,8 @@ public class BuildParameters
             IsRunningOnWindows = context.IsRunningOnWindows(),
             IsRunningOnAppVeyor = buildSystem.AppVeyor.IsRunningOnAppVeyor,
             IsPullRequest = buildSystem.AppVeyor.Environment.PullRequest.IsPullRequest,
-            IsMasterCakeVsoRepo = StringComparer.OrdinalIgnoreCase.Equals("cake-build/cake-vso", buildSystem.AppVeyor.Environment.Repository.Name),
-            IsMasterCakeVsoBranch = StringComparer.OrdinalIgnoreCase.Equals("master", buildSystem.AppVeyor.Environment.Repository.Branch),
+            IsMasterRepo = StringComparer.OrdinalIgnoreCase.Equals("gep13/chocolatey-azuredevops", buildSystem.AppVeyor.Environment.Repository.Name),
+            IsMasterBranch = StringComparer.OrdinalIgnoreCase.Equals("master", buildSystem.AppVeyor.Environment.Repository.Branch),
             IsTagged = (
                 buildSystem.AppVeyor.Environment.Repository.Tag.IsTag &&
                 !string.IsNullOrWhiteSpace(buildSystem.AppVeyor.Environment.Repository.Tag.Name)
