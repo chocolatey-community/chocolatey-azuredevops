@@ -28,17 +28,14 @@ try {
   [string]$commandName = ""
 
   if($debug) {
-    Write-Output "Adding --debug to arguments"
     $chocolateyArguments.Add("--debug") > $null
   }
 
   if($verbose) {
-    Write-Output "Adding --verbose to arguments"
     $chocolateyArguments.Add("--verbose") > $null
   }
 
   if($trace) {
-    Write-Output "Adding --trace to arguments"
     $chocolateyArguments.Add("--trace") > $null
   }
 
@@ -52,26 +49,22 @@ try {
       [string]$apikeyApikey = Get-VstsInput -Name 'apikeyApikey' -Require
       $commandName = "apikey"
 
-      $chocolateyArguments.Add("--source") > $null
-      $chocolateyArguments.Add($apikeySource) > $null
-      $chocolateyArguments.Add("--api-key") > $null
-      $chocolateyArguments.Add($apikeyApikey) > $null
+      $chocolateyArguments.Add("--source=`"'$apikeySource'`"") > $null
+      $chocolateyArguments.Add("--api-key=`"'$apikeyApikey'`"") > $null
     }
     "config"
     {
       [string]$configOperation = Get-VstsInput -Name 'configOperation' -Require
       [string]$configName = Get-VstsInput -Name 'configName' -Require
 
-      $chocolateyArguments.Add("--name") > $null
-      $chocolateyArguments.Add($configName) > $null
+      $chocolateyArguments.Add("--name=`"'$configName'`"") > $null
 
       $commandName = "config"
 
       if($configOperation -eq "set") {
         [string]$configValue = Get-VstsInput -Name 'configValue' -Require
 
-        $chocolateyArguments.Add("--value") > $null
-        $chocolateyArguments.Add($configValue) > $null
+        $chocolateyArguments.Add("--value=`"'$configValue'`"") > $null
         $chocolateyArguments.Insert(0, "set") > $null
       } else {
         $chocolateyArguments.Insert(0, "unset") > $null
@@ -83,7 +76,6 @@ try {
       [string]$customArguments = Get-VstsInput -Name 'customArguments'
 
       if($customArguments) {
-        Write-Output "Adding custom arguments"
         $chocolateyArguments.Add($customArguments) > $null
       }
 
@@ -95,8 +87,7 @@ try {
       [string]$featureName = Get-VstsInput -Name 'featureName' -Require
 
       $commandName = "feature"
-      $chocolateyArguments.Add("--name") > $null
-      $chocolateyArguments.Add($featureName) > $null
+      $chocolateyArguments.Add("--name=`"'$featureName'`"") > $null
       $chocolateyArguments.Insert(0, $featureOperation) > $null
 
     }
@@ -113,57 +104,43 @@ try {
       [string]$installParams = Get-VstsInput -Name 'installParams'
 
       if([System.Version]::Parse($chocolateyVersion) -ge [System.Version]::Parse("0.9.8.33")) {
-        Write-Output "Adding -y to arguments"
         $chocolateyArguments.Add("-y") > $null
       }
 
       if([System.Version]::Parse($chocolateyVersion) -ge [System.Version]::Parse("0.10.4")) {
-        Write-Output "Adding --no-progress to arguments"
         $chocolateyArguments.Add("--no-progress") > $null
       }
 
       if($installPackageVersion) {
-        Write-Output "Adding --version to arguments"
-        $chocolateyArguments.Add("--version") > $null
-        $chocolateyArguments.Add($installPackageVersion) > $null
+        $chocolateyArguments.Add("--version=`"'$installPackageVersion'`"") > $null
       }
 
       if($installPre) {
-        Write-Output "Adding --pre to arguments"
         $chocolateyArguments.Add("--pre") > $null
       }
 
       if($installSource) {
-        Write-Output "Adding --source to arguments"
-        $chocolateyArguments.Add("--version") > $null
-        $chocolateyArguments.Add($installSource) > $null
+        $chocolateyArguments.Add("--source=`"'$installSource'`"") > $null
       }
 
       if($installForce) {
-        Write-Output "Adding --force to arguments"
         $chocolateyArguments.Add("--force") > $null
       }
 
       if($installX86) {
-        Write-Output "Adding --x86 to arguments"
         $chocolateyArguments.Add("--x86") > $null
       }
 
       if($installInstallArgs) {
-        Write-Output "Adding --install-arguments to arguments"
-        $chocolateyArguments.Add("--install-arguments") > $null
-        $chocolateyArguments.Add($installInstallArgs) > $null
+        $chocolateyArguments.Add("--install-arguments=`"'$installInstallArgs'`"") > $null
       }
 
       if($installOverride) {
-        Write-Output "Adding --override-arguments to arguments"
         $chocolateyArguments.Add("--override-arguments") > $null
       }
 
       if($installParams) {
-        Write-Output "Adding --package-parameters to arguments"
-        $chocolateyArguments.Add("--package-parameters") > $null
-        $chocolateyArguments.Add($installParams) > $null
+        $chocolateyArguments.Add("--package-parameters=`"'$installParams'`"") > $null
       }
 
       $chocolateyArguments.Insert(0, $installPackageId) > $null
@@ -177,15 +154,11 @@ try {
       [string]$packOutputDirectory = Get-VstsInput -Name 'packOutputDirectory'
 
       if($packVersion) {
-        Write-Output "Adding --version to arguments"
-        $chocolateyArguments.Add("--version") > $null
-        $chocolateyArguments.Add($packVersion) > $null
+        $chocolateyArguments.Add("--version=`"'$packVersion'`"") > $null
       }
 
       if($packOutputDirectory) {
-        Write-Output "Adding --output-directory to arguments"
-        $chocolateyArguments.Add("--output-directory") > $null
-        $chocolateyArguments.Add($packOutputDirectory) > $null
+        $chocolateyArguments.Add("--output-directory=`"'$packOutputDirectory'`"") > $null
       }
 
       $commandName = "pack"
@@ -200,26 +173,19 @@ try {
       [string]$pushTimeout = Get-VstsInput -Name 'pushTimeout'
 
       if($pushSource) {
-        Write-Output "Adding --source to arguments"
-        $chocolateyArguments.Add("--source") > $null
-        $chocolateyArguments.Add($pushSource) > $null
+        $chocolateyArguments.Add("--source=`"'$pushSource'`"") > $null
       }
 
       if($pushApikey) {
-        Write-Output "Adding --apikey to arguments"
-        $chocolateyArguments.Add("--apikey") > $null
-        $chocolateyArguments.Add($pushApikey) > $null
+        $chocolateyArguments.Add("--apikey=`"'$pushApikey'`"") > $null
       }
 
       if($pushForce) {
-        Write-Output "Adding --force to arguments"
         $chocolateyArguments.Add("--force") > $null
       }
 
       if($pushTimeout) {
-        Write-Output "Adding -t to arguments"
-        $chocolateyArguments.Add("-t") > $null
-        $chocolateyArguments.Add($pushTimeout) > $null
+        $chocolateyArguments.Add("-t=`"'$pushTimeout'`"") > $null
       }
 
       $commandName = "push"
@@ -235,41 +201,29 @@ try {
       [string]$certPassword = Get-VstsInput -Name 'certPassword'
       [bool]$byPassProxy = Get-VstsInput -Name 'byPassProxy' -AsBool -Default $false
 
-      $chocolateyArguments.Add("--name") > $null
-      $chocolateyArguments.Add($sourceSourceName) > $null
+      $chocolateyArguments.Add("--name=`"'$sourceSourceName'`"") > $null
 
       if($sourcePriority) {
-        Write-Output "Adding --priority to arguments"
-        $chocolateyArguments.Add("--priority") > $null
-        $chocolateyArguments.Add($sourcePriority) > $null
+        $chocolateyArguments.Add("--priority=`"'$sourcePriority'`"") > $null
       }
 
       if($user) {
-        Write-Output "Adding --user to arguments"
-        $chocolateyArguments.Add("--user") > $null
-        $chocolateyArguments.Add($user) > $null
+        $chocolateyArguments.Add("--user=`"'$user'`"") > $null
       }
 
       if($password) {
-        Write-Output "Adding --password to arguments"
-        $chocolateyArguments.Add("--password") > $null
-        $chocolateyArguments.Add($password) > $null
+        $chocolateyArguments.Add("--password=`"'$password'`"") > $null
       }
 
       if($cert) {
-        Write-Output "Adding --cert to arguments"
-        $chocolateyArguments.Add("--cert") > $null
-        $chocolateyArguments.Add($cert) > $null
+        $chocolateyArguments.Add("--cert=`"'$cert'`"") > $null
       }
 
       if($certPassword) {
-        Write-Output "Adding --certpassword to arguments"
-        $chocolateyArguments.Add("--certpassword") > $null
-        $chocolateyArguments.Add($certPassword) > $null
+        $chocolateyArguments.Add("--certpassword=`"'$certPassword'`"") > $null
       }
 
       if($byPassProxy) {
-        Write-Output "Adding --bypass-proxy to arguments"
         $chocolateyArguments.Add("--bypass-proxy") > $null
       }
 
@@ -280,8 +234,7 @@ try {
         "add"
         {
           [string]$sourceSource = Get-VstsInput -Name 'sourceSource' -Require
-          $chocolateyArguments.Add("--source") > $null
-          $chocolateyArguments.Add($sourceSource) > $null
+          $chocolateyArguments.Add("--source=`"'$sourceSource'`"") > $null
 
           $chocolateyArguments.Insert(0, "add") > $null
         }
@@ -313,63 +266,47 @@ try {
       [string]$upgradeParams = Get-VstsInput -Name 'upgradeParams'
 
       if([System.Version]::Parse($chocolateyVersion) -ge [System.Version]::Parse("0.9.8.33")) {
-        Write-Output "Adding -y to arguments"
         $chocolateyArguments.Add("-y") > $null
       }
 
       if([System.Version]::Parse($chocolateyVersion) -ge [System.Version]::Parse("0.10.4")) {
-        Write-Output "Adding --no-progress to arguments"
         $chocolateyArguments.Add("--no-progress") > $null
       }
 
       if($upgradePackageVersion) {
-        Write-Output "Adding --version to arguments"
-        $chocolateyArguments.Add("--version") > $null
-        $chocolateyArguments.Add($upgradePackageVersion) > $null
+        $chocolateyArguments.Add("--version=`"'$upgradePackageVersion'`"") > $null
       }
 
       if($upgradePre) {
-        Write-Output "Adding --pre to arguments"
         $chocolateyArguments.Add("--pre") > $null
       }
 
       if($upgradeSource) {
-        Write-Output "Adding --source to arguments"
-        $chocolateyArguments.Add("--version") > $null
-        $chocolateyArguments.Add($upgradeSource) > $null
+        $chocolateyArguments.Add("--source=`"'$upgradeSource'`"") > $null
       }
 
       if($except) {
-        Write-Output "Adding --except to arguments"
-        $chocolateyArguments.Add("--except") > $null
-        $chocolateyArguments.Add($except) > $null
+        $chocolateyArguments.Add("--except=`"'$except'`"") > $null
       }
 
       if($upgradeForce) {
-        Write-Output "Adding --force to arguments"
         $chocolateyArguments.Add("--force") > $null
       }
 
       if($upgradeX86) {
-        Write-Output "Adding --x86 to arguments"
         $chocolateyArguments.Add("--x86") > $null
       }
 
       if($upgradeInstallArgs) {
-        Write-Output "Adding --install-arguments to arguments"
-        $chocolateyArguments.Add("--install-arguments") > $null
-        $chocolateyArguments.Add($upgradeInstallArgs) > $null
+        $chocolateyArguments.Add("--install-arguments=`"'$upgradeInstallArgs'`"") > $null
       }
 
       if($upgradeOverride) {
-        Write-Output "Adding --override-arguments to arguments"
         $chocolateyArguments.Add("--override-arguments") > $null
       }
 
       if($upgradeParams) {
-        Write-Output "Adding --package-parameters to arguments"
-        $chocolateyArguments.Add("--package-parameters") > $null
-        $chocolateyArguments.Add($upgradeParams) > $null
+        $chocolateyArguments.Add("--package-parameters=`"'$upgradeParams'`"") > $null
       }
 
       $chocolateyArguments.Insert(0, $upgradePackageId) > $null
@@ -378,7 +315,6 @@ try {
   }
 
   if($extraArguments) {
-    Write-Output "Adding extra arguments"
     $chocolateyArguments.Add($extraArguments)
   }
 
@@ -392,10 +328,18 @@ try {
     if($packOperation -eq "single") {
       [string]$packNuspecFileName = Get-VstsInput -Name 'packNuspecFileName' -Require
       & $chocoExe $commandName $packNuspecFileName $($chocolateyArguments)
+
+      if($LASTEXITCODE -ne 0) {
+        throw "Something went wrong with Chocolatey execution.  Check log for additional information."
+      }
     } else {
       $nuspecFiles = Get-ChildItem "*.nuspec"
       foreach($nuspecFile in $nuspecFiles) {
         & $chocoExe $commandName $nuspecFile $($chocolateyArguments)
+
+        if($LASTEXITCODE -ne 0) {
+          throw "Something went wrong with Chocolatey execution.  Check log for additional information."
+        }
       }
     }
   } elseif($commandName -eq 'push') {
@@ -405,14 +349,26 @@ try {
     if($pushOperation -eq "single") {
       [string]$pushNupkgFileName = Get-VstsInput -Name 'pushNupkgFileName' -Require
       & $chocoExe $commandName $pushNupkgFileName $($chocolateyArguments)
+
+      if($LASTEXITCODE -ne 0) {
+        throw "Something went wrong with Chocolatey execution.  Check log for additional information."
+      }
     } else {
       $nupkgFiles = Get-ChildItem "*.nupkg"
       foreach($nupkgFile in $nupkgFiles) {
         & $chocoExe $commandName $nupkgFile $($chocolateyArguments)
+
+        if($LASTEXITCODE -ne 0) {
+          throw "Something went wrong with Chocolatey execution.  Check log for additional information."
+        }
       }
     }
   } else {
     & $chocoExe $commandName $($chocolateyArguments)
+
+    if($LASTEXITCODE -ne 0) {
+      throw "Something went wrong with Chocolatey execution.  Check log for additional information."
+    }
   }
 } catch {
 	Write-VstsTaskError $_.Exception.Message

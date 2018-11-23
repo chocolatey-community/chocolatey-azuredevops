@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "name": "Chocolatey",
   "publisher": "gep13",
+  "public": true,
   "description": "A set of Tasks related to using Chocolatey as part of your Azure DevOps Build Pipelines.",
   "targets": [
     {
@@ -21,6 +22,25 @@
     "color": "rgb(220, 235, 252)",
     "theme": "light"
   },
+  "links": {
+    "learn": {
+      "uri": "https://gep13.github.io/chocolatey-azuredevops/"
+    },
+    "license": {
+      "uri": "https://github.com/gep13/chocolatey-azuredevops/blob/develop/LICENSE"
+    },
+    "repository": {
+      "uri": "https://github.com/gep13/chocolatey-azuredevops"
+    },
+    "support": {
+      "uri": "https://github.com/gep13/chocolatey-azuredevops/issues"
+    }
+  },
+  "screenshots": [
+    {
+      "path": "images/task.png"
+    }
+  ],
   "content": {
     "details": {
       "path": "readme.md"

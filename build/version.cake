@@ -49,7 +49,7 @@ public class BuildVersion
 
             version = assertedVersions.MajorMinorPatch;
             semVersion = assertedVersions.LegacySemVerPadded;
-            milestone = string.Concat("v", version);
+            milestone = version;
             major = assertedVersions.Major.ToString();
             minor = assertedVersions.Minor.ToString();
             patch = assertedVersions.Patch.ToString();

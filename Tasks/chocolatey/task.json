@@ -4,7 +4,7 @@
   "friendlyName": "Chocolatey",
   "description": "Run various Chocolatey commands, including pack, push, install, upgrade, etc.",
   "author": "gep13",
-  "helpMarkDown": "[More Information](https://gep13.co.uk/chocolatey-azuredevops",
+  "helpMarkDown": "[More Information](https://gep13.github.io/chocolatey-azuredevops/",
   "category": "Build",
   "visibility": [
     "Build",
@@ -85,7 +85,7 @@
       "type": "pickList",
       "label": "Command",
       "defaultValue": "pack",
-      "helpMarkDown": "The Chocolatey command to run. Select 'Custom' to use a different command.",
+      "helpMarkDown": "The Chocolatey command to run. Select 'custom' to use other commands that are available [here](https://chocolatey.org/docs/commands-reference).",
       "required": "true",
       "properties": {
         "EditableOptions": "False"
