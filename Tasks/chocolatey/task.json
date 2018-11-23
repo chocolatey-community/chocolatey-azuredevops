@@ -85,7 +85,7 @@
       "type": "pickList",
       "label": "Command",
       "defaultValue": "pack",
-      "helpMarkDown": "The Chocolatey command to run. Select 'Custom' to use a different command.",
+      "helpMarkDown": "The Chocolatey command to run. Select 'custom' to use other commands that are available [here](https://chocolatey.org/docs/commands-reference).",
       "required": "true",
       "properties": {
         "EditableOptions": "False"
