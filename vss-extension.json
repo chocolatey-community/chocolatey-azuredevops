@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "name": "Chocolatey",
   "publisher": "gep13",
+  "public": true,
   "description": "A set of Tasks related to using Chocolatey as part of your Azure DevOps Build Pipelines.",
   "targets": [
     {
