@@ -60,11 +60,11 @@ public class BuildParameters
                 !string.IsNullOrWhiteSpace(buildSystem.AppVeyor.Environment.Repository.Tag.Name)
             ),
             GitHub = new BuildCredentials (
-                userName: context.EnvironmentVariable("CAKEVSO_GITHUB_USERNAME"),
-                password: context.EnvironmentVariable("CAKEVSO_GITHUB_PASSWORD")
+                userName: context.EnvironmentVariable("CHOCOLATEYAZUREDEVOPS_GITHUB_USERNAME"),
+                password: context.EnvironmentVariable("CHOCOLATEYAZUREDEVOPS_GITHUB_PASSWORD")
             ),
             Marketplace = new VisualStudioMarketplaceCredentials (
-                token: context.EnvironmentVariable("CAKEVSO_VSMARKETPLACE_TOKEN")
+                token: context.EnvironmentVariable("CHOCOLATEYAZUREDEVOPS_VSMARKETPLACE_TOKEN")
             ),
             IsPublishBuild = new [] {
                 "ReleaseNotes",
@@ -76,7 +76,7 @@ public class BuildParameters
             }.Any(
                 publishTarget => StringComparer.OrdinalIgnoreCase.Equals(publishTarget, target)
             ),
-            SkipGitVersion = StringComparer.OrdinalIgnoreCase.Equals("True", context.EnvironmentVariable("CAKE_SKIP_GITVERSION"))
+            SkipGitVersion = StringComparer.OrdinalIgnoreCase.Equals("True", context.EnvironmentVariable("CHOCOLATEYAZUREDEVOPS_SKIP_GITVERSION"))
         };
     }
 }
