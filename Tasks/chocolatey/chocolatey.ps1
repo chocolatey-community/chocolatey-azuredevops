@@ -392,10 +392,18 @@ try {
     if($packOperation -eq "single") {
       [string]$packNuspecFileName = Get-VstsInput -Name 'packNuspecFileName' -Require
       & $chocoExe $commandName $packNuspecFileName $($chocolateyArguments)
+
+      if($LASTEXITCODE -ne 0) {
+        throw "Something went wrong with Chocolatey execution.  Check log for additional information."
+      }
     } else {
       $nuspecFiles = Get-ChildItem "*.nuspec"
       foreach($nuspecFile in $nuspecFiles) {
         & $chocoExe $commandName $nuspecFile $($chocolateyArguments)
+
+        if($LASTEXITCODE -ne 0) {
+          throw "Something went wrong with Chocolatey execution.  Check log for additional information."
+        }
       }
     }
   } elseif($commandName -eq 'push') {
@@ -405,14 +413,26 @@ try {
     if($pushOperation -eq "single") {
       [string]$pushNupkgFileName = Get-VstsInput -Name 'pushNupkgFileName' -Require
       & $chocoExe $commandName $pushNupkgFileName $($chocolateyArguments)
+
+      if($LASTEXITCODE -ne 0) {
+        throw "Something went wrong with Chocolatey execution.  Check log for additional information."
+      }
     } else {
       $nupkgFiles = Get-ChildItem "*.nupkg"
       foreach($nupkgFile in $nupkgFiles) {
         & $chocoExe $commandName $nupkgFile $($chocolateyArguments)
+
+        if($LASTEXITCODE -ne 0) {
+          throw "Something went wrong with Chocolatey execution.  Check log for additional information."
+        }
       }
     }
   } else {
     & $chocoExe $commandName $($chocolateyArguments)
+
+    if($LASTEXITCODE -ne 0) {
+      throw "Something went wrong with Chocolatey execution.  Check log for additional information."
+    }
   }
 } catch {
 	Write-VstsTaskError $_.Exception.Message
