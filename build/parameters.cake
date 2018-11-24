@@ -41,7 +41,6 @@ public class BuildParameters
                     { "Host",  WebHost },
                     { "LinkRoot",  WebLinkRoot },
                     { "BaseEditUrl", WebBaseEditUrl },
-                    { "SourceFiles", WyamSourceFiles },
                     { "Title", "Chocolatey Azure DevOps" },
                     { "IncludeGlobalNamespace", false }
                 };
