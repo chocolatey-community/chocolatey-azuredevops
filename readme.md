@@ -1,7 +1,5 @@
 # Chocolatey Azure DevOps Tasks
 
-[![Join the chat at https://gitter.im/gep13/chocolatey-azuredevops](https://badges.gitter.im/gep13/chocolatey-azuredevops.svg)](https://gitter.im/gep13/chocolatey-azuredevops?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 This extension brings support for [Chocolatey](https://chocolatey.org/) to Azure DevOps.
 
 ## Table of Contents
@@ -47,6 +45,8 @@ The Chocolatey Azure DevOps Extension is modelled on the NuGet Extension, and ma
 ## Contributing
 
 If you would like to see any other tasks or features added for this Azure DevOps Extension, feel free to raise an [issue](https://github.com/gep13/chocolatey-azuredevops/issues), and if possible, a follow up pull request.
+
+You can also join in the Gitter Chat [![Join the chat at https://gitter.im/gep13/chocolatey-azuredevops](https://badges.gitter.im/gep13/chocolatey-azuredevops.svg)](https://gitter.im/gep13/chocolatey-azuredevops?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Releases
 
