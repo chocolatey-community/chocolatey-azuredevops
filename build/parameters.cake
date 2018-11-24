@@ -140,7 +140,7 @@ public class BuildParameters
             WyamRecipe = "Docs",
             WyamTheme = "Samson",
             WebHost = "gep13.github.io",
-            WebLinkRoot = "/",
+            WebLinkRoot = "chocolatey-azuredevops",
             WebBaseEditUrl = "https://github.com/gep13/chocolatey-azuredevops/tree/master/input/"
         };
     }
