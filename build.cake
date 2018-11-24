@@ -67,6 +67,14 @@ Task("Clean")
     CleanDirectories(new[] { "./build-results" });
 });
 
+Task("Npm-Install")
+    .Does(() =>
+{
+    var settings = new NpmInstallSettings();
+    settings.LogLevel = NpmLogLevel.Silent;
+    NpmInstall(settings);
+});
+
 Task("Install-Tfx-Cli")
     .Does(() =>
 {
@@ -112,6 +120,7 @@ Task("Update-Json-Versions")
 
 Task("Package-Extension")
     .IsDependentOn("Update-Json-Versions")
+    .IsDependentOn("Npm-Install")
     .IsDependentOn("Install-Tfx-Cli")
     .IsDependentOn("Clean")
     .Does(() =>
