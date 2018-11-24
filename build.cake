@@ -5,6 +5,7 @@
 #addin "nuget:?package=MagicChunks&version=1.1.0.34"
 #addin "nuget:?package=Cake.Tfx&version=0.4.2"
 #addin "nuget:?package=Cake.Npm&version=0.7.2"
+#addin "nuget:?package=Cake.AppVeyor&version=1.1.0.9"
 
 //////////////////////////////////////////////////////////////////////
 // TOOLS
@@ -118,6 +119,16 @@ Task("Package-Extension")
     });
 });
 
+Task("Upload-AppVeyor-Artifacts")
+    .IsDependentOn("Package-Extension")
+    .WithCriteria(() => parameters.IsRunningOnAppVeyor)
+.Does(() =>
+{
+    var buildResultDir = Directory("./build-results");
+    var packageFile = File("gep13.chocolatey-azuredevops-" + parameters.Version.SemVersion + ".vsix");
+    AppVeyor.UploadArtifact(buildResultDir + packageFile);
+});
+
 Task("Publish-GitHub-Release")
     .WithCriteria(() => parameters.ShouldPublish)
     .Does(() =>
@@ -162,6 +173,7 @@ Task("Default")
     .IsDependentOn("Package-Extension");
 
 Task("Appveyor")
+    .IsDependentOn("Upload-AppVeyor-Artifacts")
     .IsDependentOn("Publish-Extension")
     .IsDependentOn("Publish-GitHub-Release")
     .Finally(() =>
