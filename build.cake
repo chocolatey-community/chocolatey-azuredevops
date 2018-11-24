@@ -4,7 +4,7 @@
 
 #addin "nuget:?package=MagicChunks&version=2.0.0.119"
 #addin "nuget:?package=Cake.Tfx&version=0.4.2"
-#addin "nuget:?package=Cake.Npm&version=0.7.2"
+#addin "nuget:?package=Cake.Npm&version=0.10.0"
 #addin "nuget:?package=Cake.AppVeyor&version=1.1.0.9"
 #addin "nuget:?package=Cake.Wyam&version=1.7.4"
 #addin "nuget:?package=Cake.Git&version=0.19.0"
