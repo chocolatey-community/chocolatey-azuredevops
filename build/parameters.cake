@@ -137,8 +137,8 @@ public class BuildParameters
             WyamRootDirectoryPath = context.MakeAbsolute(context.Environment.WorkingDirectory),
             WyamPublishDirectoryPath = context.MakeAbsolute(context.Directory("build-results/_PublishedDocumentation")),
             WyamConfigurationFile = context.MakeAbsolute((FilePath)"config.wyam"),
-            WyamRecipe = "Blog",
-            WyamTheme = "CleanBlog",
+            WyamRecipe = "Docs",
+            WyamTheme = "Samson",
             WebHost = "gep13.github.io",
             WebLinkRoot = "/",
             WebBaseEditUrl = "https://github.com/gep13/chocolatey-azuredevops/tree/master/input/"
