@@ -41,7 +41,7 @@ public class BuildParameters
                     { "Host",  WebHost },
                     { "LinkRoot",  WebLinkRoot },
                     { "BaseEditUrl", WebBaseEditUrl },
-                    { "Title", "Chocolatey Azure DevOps" },
+                    { "Title", "Choco Azure DevOps" },
                     { "IncludeGlobalNamespace", false }
                 };
 
