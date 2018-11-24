@@ -7,6 +7,7 @@ This extension brings support for [Chocolatey](https://chocolatey.org/) to Azure
 1. [What is Chocolatey?](#what-is-chocolatey)
 1. [Tasks](#tasks)
 1. [Resources](#resources)
+1. [Documentation](#documentation)
 1. [Thanks](#thanks)
 1. [Contributing](#contributing)
 1. [Releases](#releases)
@@ -37,6 +38,10 @@ This extension contains only a single Task, which is capable of executing the fo
 ## Resources
 
 Short YouTube videos of each of the releases of this extension can be found in this [playlist](https://www.youtube.com/playlist?list=PL84yg23i9GBhGahFf5-41vOJhn3D-6EUU).
+
+## Documentation
+
+You can find the documentation that is available for this project [here](https://gep13.github.io/chocolatey-azuredevops/).
 
 ## Thanks
 
