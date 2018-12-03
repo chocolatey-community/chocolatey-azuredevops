@@ -7,6 +7,7 @@ This extension brings support for [Chocolatey](https://chocolatey.org/) to Azure
 1. [What is Chocolatey?](#what-is-chocolatey)
 1. [Tasks](#tasks)
 1. [Resources](#resources)
+1. [Documentation](#documentation)
 1. [Thanks](#thanks)
 1. [Contributing](#contributing)
 1. [Releases](#releases)
@@ -38,6 +39,10 @@ This extension contains only a single Task, which is capable of executing the fo
 
 Short YouTube videos of each of the releases of this extension can be found in this [playlist](https://www.youtube.com/playlist?list=PL84yg23i9GBhGahFf5-41vOJhn3D-6EUU).
 
+## Documentation
+
+You can find the documentation that is available for this project [here](https://gep13.github.io/chocolatey-azuredevops/).
+
 ## Thanks
 
 The Chocolatey Azure DevOps Extension is modelled on the NuGet Extension, and many of the ideas in terms of how it functions, is based on how it works.
@@ -45,6 +50,8 @@ The Chocolatey Azure DevOps Extension is modelled on the NuGet Extension, and ma
 ## Contributing
 
 If you would like to see any other tasks or features added for this Azure DevOps Extension, feel free to raise an [issue](https://github.com/gep13/chocolatey-azuredevops/issues), and if possible, a follow up pull request.
+
+You can also join in the Gitter Chat [![Join the chat at https://gitter.im/gep13/chocolatey-azuredevops](https://badges.gitter.im/gep13/chocolatey-azuredevops.svg)](https://gitter.im/gep13/chocolatey-azuredevops?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Releases
 

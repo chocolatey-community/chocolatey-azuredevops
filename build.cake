@@ -2,9 +2,15 @@
 // ADDINS
 //////////////////////////////////////////////////////////////////////
 
-#addin "nuget:?package=MagicChunks&version=1.1.0.34"
+#addin "nuget:?package=MagicChunks&version=2.0.0.119"
 #addin "nuget:?package=Cake.Tfx&version=0.4.2"
-#addin "nuget:?package=Cake.Npm&version=0.7.2"
+#addin "nuget:?package=Cake.Npm&version=0.10.0"
+#addin "nuget:?package=Cake.AppVeyor&version=1.1.0.9"
+#addin "nuget:?package=Cake.Wyam&version=1.7.4"
+#addin "nuget:?package=Cake.Git&version=0.19.0"
+#addin "nuget:?package=Cake.Kudu&version=0.8.0"
+#addin "nuget:?package=Cake.Gitter&version=0.10.0"
+#addin "nuget:?package=Cake.Twitter&version=0.9.0"
 
 //////////////////////////////////////////////////////////////////////
 // TOOLS
@@ -12,9 +18,14 @@
 
 #tool "nuget:?package=gitreleasemanager&version=0.7.1"
 #tool "nuget:?package=GitVersion.CommandLine&version=3.6.4"
+#tool "nuget:?package=Wyam&version=1.7.4"
+#tool "nuget:?package=KuduSync.NET&version=1.4.0"
 
 // Load other scripts.
 #load "./build/parameters.cake"
+#load "./build/wyam.cake"
+#load "./build/gitter.cake"
+#load "./build/twitter.cake"
 
 //////////////////////////////////////////////////////////////////////
 // PARAMETERS
@@ -50,6 +61,29 @@ Setup(context =>
         parameters.IsTagged);
 });
 
+Teardown(context =>
+{
+    Information("Starting Teardown...");
+
+    if(context.Successful)
+    {
+        if(!parameters.IsLocalBuild && !parameters.IsPullRequest && parameters.IsMasterRepo && (parameters.IsMasterBranch || ((parameters.IsReleaseBranch || parameters.IsHotFixBranch))) && parameters.IsTagged)
+        {
+            if(parameters.CanPostToTwitter)
+            {
+                SendMessageToTwitter();
+            }
+
+            if(parameters.CanPostToGitter)
+            {
+                SendMessageToGitterRoom();
+            }
+        }
+    }
+
+    Information("Finished running tasks.");
+});
+
 //////////////////////////////////////////////////////////////////////
 // TASKS
 //////////////////////////////////////////////////////////////////////
@@ -60,10 +94,22 @@ Task("Clean")
     CleanDirectories(new[] { "./build-results" });
 });
 
+Task("Npm-Install")
+    .Does(() =>
+{
+    var settings = new NpmInstallSettings();
+    settings.LogLevel = NpmLogLevel.Silent;
+    NpmInstall(settings);
+});
+
 Task("Install-Tfx-Cli")
     .Does(() =>
 {
-    Npm.WithLogLevel(NpmLogLevel.Silent).FromPath(".").Install(settings => settings.Package("tfx-cli").Globally());
+    var settings = new NpmInstallSettings();
+    settings.Global = true;
+    settings.AddPackage("tfx-cli", "0.6.3");
+    settings.LogLevel = NpmLogLevel.Silent;
+    NpmInstall(settings);
 });
 
 Task("Create-Release-Notes")
@@ -105,6 +151,7 @@ Task("Update-Json-Versions")
 
 Task("Package-Extension")
     .IsDependentOn("Update-Json-Versions")
+    .IsDependentOn("Npm-Install")
     .IsDependentOn("Install-Tfx-Cli")
     .IsDependentOn("Clean")
     .Does(() =>
@@ -116,6 +163,16 @@ Task("Package-Extension")
         ManifestGlobs = new List<string>(){ "./vss-extension.json" },
         OutputPath = buildResultDir
     });
+});
+
+Task("Upload-AppVeyor-Artifacts")
+    .IsDependentOn("Package-Extension")
+    .WithCriteria(() => parameters.IsRunningOnAppVeyor)
+.Does(() =>
+{
+    var buildResultDir = Directory("./build-results");
+    var packageFile = File("gep13.chocolatey-azuredevops-" + parameters.Version.SemVersion + ".vsix");
+    AppVeyor.UploadArtifact(buildResultDir + packageFile);
 });
 
 Task("Publish-GitHub-Release")
@@ -162,6 +219,8 @@ Task("Default")
     .IsDependentOn("Package-Extension");
 
 Task("Appveyor")
+    .IsDependentOn("Upload-AppVeyor-Artifacts")
+    .IsDependentOn("Publish-Documentation")
     .IsDependentOn("Publish-Extension")
     .IsDependentOn("Publish-GitHub-Release")
     .Finally(() =>
