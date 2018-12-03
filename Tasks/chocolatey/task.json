@@ -427,13 +427,27 @@
       "groupName": "pushOptions"
     },
     {
+      "name": "chocolateySourceType",
+      "type": "radio",
+      "label": "Source to push Chocolatey Packages to",
+      "required": true,
+      "defaultValue": "manual",
+      "helpMarkDown": "This can either be set directly in the Task definition, by setting the source and API Key, but by selecting pre-defined Chocolatey source from your Organisation settings.",
+      "options": {
+        "manual": "Manual configuration",
+        "stored": "Externally stored configuration"
+      },
+      "groupName": "pushOptions"
+    },
+    {
       "name": "pushSource",
       "type": "string",
       "label": "Source",
       "defaultValue": "https://push.chocolatey.org/",
       "required": false,
       "helpMarkDown": "The source to push the nupkg(s) to.",
-      "groupName": "pushOptions"
+      "groupName": "pushOptions",
+      "visibleRule": "chocolateySourceType = manual"
     },
     {
       "name": "pushApikey",
@@ -442,7 +456,17 @@
       "defaultValue": "",
       "required": false,
       "helpMarkDown": "The API Key that should be used to push the nupkg(s) to specified source.",
-      "groupName": "pushOptions"
+      "groupName": "pushOptions",
+      "visibleRule": "chocolateySourceType = manual"
+    },
+    {
+      "name": "externalEndpoint",
+      "type": "connectedService:ExternalNuGetFeed",
+      "label": "Chocolatey server",
+      "required": true,
+      "helpMarkDown": "The NuGet service connection that contains the external Chocolatey server’s credentials.",
+      "groupName": "pushOptions",
+      "visibleRule": "chocolateySourceType = stored"
     },
     {
       "name": "pushForce",

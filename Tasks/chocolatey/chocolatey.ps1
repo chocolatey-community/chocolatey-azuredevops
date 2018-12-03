@@ -167,17 +167,37 @@ try {
     {
       [string]$pushOperation = Get-VstsInput -Name 'pushOperation' -Require
       [string]$pushWorkingDirectory = Get-VstsInput -Name 'pushWorkingDirectory' -Require
-      [string]$pushSource = Get-VstsInput -Name 'pushSource' -Default 'https://push.chocolatey.org/'
-      [string]$pushApikey = Get-VstsInput -Name 'pushApikey'
       [bool]$pushForce = Get-VstsInput -Name 'pushForce' -AsBool -Default $false
       [string]$pushTimeout = Get-VstsInput -Name 'pushTimeout'
+      [string]$chocolateySourceType = Get-VstsInput -Name 'chocolateySourceType' -Require
 
-      if($pushSource) {
-        $chocolateyArguments.Add("--source=`"'$pushSource'`"") > $null
-      }
+      switch ( $chocolateySourceType )
+      {
+        "manual"
+        {
+          [string]$pushSource = Get-VstsInput -Name 'pushSource' -Default 'https://push.chocolatey.org/'
+          [string]$pushApikey = Get-VstsInput -Name 'pushApikey'
 
-      if($pushApikey) {
-        $chocolateyArguments.Add("--apikey=`"'$pushApikey'`"") > $null
+          if($pushSource) {
+            $chocolateyArguments.Add("--source=`"'$pushSource'`"") > $null
+          }
+
+          if($pushApikey) {
+            $chocolateyArguments.Add("--apikey=`"'$pushApikey'`"") > $null
+          }
+        }
+        "stored"
+        {
+          [string]$endPointGuid = Get-VstsInput -Name 'externalEndpoint' -Require
+          $endPoint = Get-VstsEndpoint $endPointGuid
+
+          if($endPoint.Auth.scheme -eq "None") {
+            $chocolateyArguments.Add("--source=`"'$($endPoint.Url)'`"") > $null
+            $chocolateyArguments.Add("--apikey=`"'$($endPoint.Auth.parameters.nugetkey)'`"") > $null
+          } else {
+            throw "This task does not support any schemes for External NuGet Feeds other than 'None'."
+          }
+        }
       }
 
       if($pushForce) {
