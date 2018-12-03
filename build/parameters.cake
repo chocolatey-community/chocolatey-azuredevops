@@ -97,7 +97,7 @@ public class BuildParameters
     {
         get
         {
-            return "@/all Version " + Version.SemVersion + " of the Chocolatey Azure DevOps Extension has just been released, https://marketplace.visualstudio.com/items?itemName=gep13.chocolatey-azuredevops.";
+            return "@/all Version " + Version.SemVersion + " of the Chocolatey Azure DevOps Extension has just been released, https://marketplace.visualstudio.com/items?itemName=gep13.chocolatey-azuredevops.  Full release notes: https://github.com/gep13/chocolatey-azuredevops/releases/tag/" + Version.SemVersion;
         }
     }
 
@@ -105,7 +105,7 @@ public class BuildParameters
     {
         get
         {
-            return "Version " + Version.SemVersion + " of the Chocolatey Azure DevOps Extension has just been released, https://marketplace.visualstudio.com/items?itemName=gep13.chocolatey-azuredevops. @AzureDevOps @chocolateynuget #AzureDevOps #Azure";
+            return "Version " + Version.SemVersion + " of the Chocolatey Azure DevOps Extension has just been released, https://marketplace.visualstudio.com/items?itemName=gep13.chocolatey-azuredevops. @AzureDevOps @chocolateynuget #AzureDevOps #Azure  Full release notes: https://github.com/gep13/chocolatey-azuredevops/releases/tag/" + Version.SemVersion;
         }
     }
 
