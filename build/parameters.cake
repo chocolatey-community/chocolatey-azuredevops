@@ -186,7 +186,7 @@ public class BuildParameters
                 publishTarget => StringComparer.OrdinalIgnoreCase.Equals(publishTarget, target)
             ),
             SkipGitVersion = StringComparer.OrdinalIgnoreCase.Equals("True", context.EnvironmentVariable("CHOCOLATEYAZUREDEVOPS_SKIP_GITVERSION")),
-            WyamRootDirectoryPath = context.MakeAbsolute(context.Environment.WorkingDirectory),
+            WyamRootDirectoryPath = context.MakeAbsolute(context.Directory("docs")),
             WyamPublishDirectoryPath = context.MakeAbsolute(context.Directory("build-results/_PublishedDocumentation")),
             WyamConfigurationFile = context.MakeAbsolute((FilePath)"config.wyam"),
             WyamRecipe = "Docs",
