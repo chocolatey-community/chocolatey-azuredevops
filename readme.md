@@ -41,7 +41,7 @@ Short YouTube videos of each of the releases of this extension can be found in t
 
 ## Documentation
 
-You can find the documentation that is available for this project [here](https://gep13.github.io/chocolatey-azuredevops/).
+You can find the documentation that is available for this project [here](https://chocolatey-community.github.io/chocolatey-azuredevops/).
 
 ## Thanks
 
