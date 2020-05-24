@@ -16,7 +16,7 @@
 // TOOLS
 //////////////////////////////////////////////////////////////////////
 
-#tool "nuget:?package=gitreleasemanager&version=0.7.1"
+#tool "nuget:?package=gitreleasemanager&version=0.11.0"
 #tool "nuget:?package=GitVersion.CommandLine&version=3.6.4"
 #tool "nuget:?package=Wyam&version=1.7.4"
 #tool "nuget:?package=KuduSync.NET&version=1.4.0"
