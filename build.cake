@@ -123,17 +123,9 @@ Task("Create-Release-Notes")
     });
 });
 
-Task("Update-Json-Versions")
-    .Does(() =>
+Task("Update-Task-Json-Versions")
+    .DoesForEach(new [] {"Tasks/chocolatey/task.json", "Tasks/installer/task.json"}, taskJson => 
 {
-    var projectToPackagePackageJson = "vss-extension.json";
-    Information("Updating {0} version -> {1}", projectToPackagePackageJson, parameters.Version.SemVersion);
-
-    TransformConfig(projectToPackagePackageJson, projectToPackagePackageJson, new TransformationCollection {
-        { "version", parameters.Version.SemVersion }
-    });
-
-    var taskJson = "Tasks/chocolatey/task.json";
     Information("Updating {0} version -> {1}", taskJson, parameters.Version.SemVersion);
 
     TransformConfig(taskJson, taskJson, new TransformationCollection {
@@ -149,8 +141,20 @@ Task("Update-Json-Versions")
     });
 });
 
+Task("Update-Manifest-Json-Version")
+    .Does(() =>
+{
+    var projectToPackagePackageJson = "vss-extension.json";
+    Information("Updating {0} version -> {1}", projectToPackagePackageJson, parameters.Version.SemVersion);
+
+    TransformConfig(projectToPackagePackageJson, projectToPackagePackageJson, new TransformationCollection {
+        { "version", parameters.Version.SemVersion }
+    });
+});
+
 Task("Package-Extension")
-    .IsDependentOn("Update-Json-Versions")
+    .IsDependentOn("Update-Manifest-Json-Version")
+    .IsDependentOn("Update-Task-Json-Versions")
     .IsDependentOn("Npm-Install")
     .IsDependentOn("Install-Tfx-Cli")
     .IsDependentOn("Clean")

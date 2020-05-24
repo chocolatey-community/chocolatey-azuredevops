@@ -72,11 +72,24 @@
       "properties": {
         "name": "Tasks/chocolatey"
       }
+    },
+    {
+      "id": "chocolatey-tool-installer-azuredevops",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "Tasks/installer"
+      }
     }
   ],
   "files": [
     {
       "path": "Tasks/chocolatey"
+    },
+    {
+      "path": "Tasks/installer"
     }
   ]
 }
