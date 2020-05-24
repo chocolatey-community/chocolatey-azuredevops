@@ -5,7 +5,7 @@
   "friendlyName": "Chocolatey tool installer",
   "description": "Acquires the latest version of Chocolatey from the internet and adds it to the PATH (if not already installed). This task only works on Windows agents",
   "author": "David Gardiner",
-  "helpMarkDown": "[More Information](https://gep13.github.io/chocolatey-azuredevops/",
+  "helpMarkDown": "[More Information](https://chocolatey-community.github.io/chocolatey-azuredevops/",
   "category": "Azure Pipelines",
   "version": {
     "Major": "0",

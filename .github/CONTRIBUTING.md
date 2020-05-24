@@ -18,8 +18,8 @@ By contributing to this project, you assert that:
 * The contribution is your own original work.
 * You have the right to assign the copyright for the work (it is not owned by your employer, or
   you have been given copyright assignment in writing).
-* You [license](https://github.com/gep13/chocolatey-azuredevops/blob/develop/LICENSE) the contribution under the terms applied to the rest of this project.
-* You agree to follow the [code of conduct](https://github.com/gep13/chocolatey-azuredevops/blob/develop/CODEOFCONDUCT.md).
+* You [license](https://github.com/chocolatey-community/chocolatey-azuredevops/blob/develop/LICENSE) the contribution under the terms applied to the rest of this project.
+* You agree to follow the [code of conduct](https://github.com/chocolatey-community/chocolatey-azuredevops/blob/develop/CODEOFCONDUCT.md).
 
 ## Definition of trivial contributions
 It's hard to define what is a trivial contribution. Sometimes even a 1 character change can be considered significant.
@@ -41,18 +41,18 @@ What is generally not considered trivial:
 ## Contributing process
 ### Get buyoff or find open community issues or features
 
- * Through GitHub, or through the [Gitter chat](https://gitter.im/gep13/chocolatey-azuredevops) (preferred),
+ * Through GitHub, or through the [Gitter chat](https://gitter.im/chocolatey-community/community) (preferred),
    you talk about a feature you would like to see (or a bug), and why it should be included.
    * If approved through the Gitter chat, ensure an accompanying GitHub issue is created with
      information and a link back to the discussion.
  * Once you get a nod from one of the maintainers, you can start on the feature.
  * Alternatively, if a feature is on the issues list with the
-   [help wanted](https://github.com/gep13/chocolatey-azuredevops/labels/help%20wanted) label,
+   [help wanted](https://github.com/chocolatey-community/chocolatey-azuredevops/labels/help%20wanted) label,
    it is open for a community member (contributor) to patch. You should comment that you are signing up for it on the issue so someone else doesn't also sign up for the work.
 
 ### Set up your environment
 
- * You create, or update, a fork of gep13/chocolatey-azuredeveops under your GitHub account.
+ * You create, or update, a fork of chocolatey-community/chocolatey-azuredevops under your GitHub account.
  * From there you create a branch named specific to the feature.
  * In the branch you do work specific to the feature.
  * Please also observe the following:
@@ -83,7 +83,7 @@ Prerequisites:
 
 Submitting PR:
 
- * Once you feel it is ready, submit the pull request to the `gep13/chocolatey-azuredevops` repository against the `develop` branch
+ * Once you feel it is ready, submit the pull request to the `chocolatey-community/chocolatey-azuredevops` repository against the `develop` branch
    unless specifically requested to submit it against another branch.
    * In the case of a larger change that is going to require more discussion,
      please submit a PR sooner. Waiting until you are ready may mean more changes than you are
@@ -116,7 +116,7 @@ the issue/open a new PR (referencing old one).
 Sometimes we may need you to rebase your commit against the latest code before we can review it further.
 If this happens, you can do the following:
 
- * `git fetch upstream` (upstream would be the mainstream repo or `gep13/chocolatey-azuredevops` in this case)
+ * `git fetch upstream` (upstream would be the mainstream repo or `chocolatey-community/chocolatey-azuredevops` in this case)
  * `git checkout develop`
  * `git rebase upstream/develop`
  * `git checkout your-branch`

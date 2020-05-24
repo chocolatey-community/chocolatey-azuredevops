@@ -115,7 +115,7 @@ Task("Install-Tfx-Cli")
 Task("Create-Release-Notes")
     .Does(() =>
 {
-    GitReleaseManagerCreate(parameters.GitHub.UserName, parameters.GitHub.Password, "gep13", "chocolatey-azuredevops", new GitReleaseManagerCreateSettings {
+    GitReleaseManagerCreate(parameters.GitHub.UserName, parameters.GitHub.Password, "chocolatey-community", "chocolatey-azuredevops", new GitReleaseManagerCreateSettings {
         Milestone         = parameters.Version.Milestone,
         Name              = parameters.Version.Milestone,
         Prerelease        = true,
@@ -124,7 +124,7 @@ Task("Create-Release-Notes")
 });
 
 Task("Update-Task-Json-Versions")
-    .DoesForEach(new [] {"Tasks/chocolatey/task.json", "Tasks/installer/task.json"}, taskJson => 
+    .DoesForEach(new [] {"Tasks/chocolatey/task.json", "Tasks/installer/task.json"}, taskJson =>
 {
     Information("Updating {0} version -> {1}", taskJson, parameters.Version.SemVersion);
 
@@ -186,8 +186,8 @@ Task("Publish-GitHub-Release")
     var buildResultDir = Directory("./build-results");
     var packageFile = File("gep13.chocolatey-azuredevops-" + parameters.Version.SemVersion + ".vsix");
 
-    GitReleaseManagerAddAssets(parameters.GitHub.UserName, parameters.GitHub.Password, "gep13", "chocolatey-azuredevops", parameters.Version.Milestone, buildResultDir + packageFile);
-    GitReleaseManagerClose(parameters.GitHub.UserName, parameters.GitHub.Password, "gep13", "chocolatey-azuredevops", parameters.Version.Milestone);
+    GitReleaseManagerAddAssets(parameters.GitHub.UserName, parameters.GitHub.Password, "chocolatey-community", "chocolatey-azuredevops", parameters.Version.Milestone, buildResultDir + packageFile);
+    GitReleaseManagerClose(parameters.GitHub.UserName, parameters.GitHub.Password, "chocolatey-community", "chocolatey-azuredevops", parameters.Version.Milestone);
 })
 .OnError(exception =>
 {
