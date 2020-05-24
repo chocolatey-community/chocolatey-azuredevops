@@ -107,7 +107,7 @@ Task("Install-Tfx-Cli")
 {
     var settings = new NpmInstallSettings();
     settings.Global = true;
-    settings.AddPackage("tfx-cli", "0.6.3");
+    settings.AddPackage("tfx-cli", "0.7.11");
     settings.LogLevel = NpmLogLevel.Silent;
     NpmInstall(settings);
 });
