@@ -231,7 +231,7 @@ Task("Appveyor")
 {
     if(publishingError)
     {
-        throw new Exception("An error occurred during the publishing of cake-vscode.  All publishing tasks have been attempted.");
+        throw new Exception("An error occurred during the publishing of chocolatey-azuredevops.  All publishing tasks have been attempted.");
     }
 });
 
