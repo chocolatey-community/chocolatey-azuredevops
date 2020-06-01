@@ -2,10 +2,10 @@
 <rss version="2.0">
 	<channel>
 		<title>Choco Azure DevOps</title>
-		<link>http://gep13.github.io/chocolatey-azuredevops</link>
+		<link>http://chocolatey-community.github.io/chocolatey-azuredevops</link>
 		<description />
-		<copyright>2018</copyright>
-		<pubDate>Mon, 03 Dec 2018 08:06:34 GMT</pubDate>
-		<lastBuildDate>Mon, 03 Dec 2018 08:06:34 GMT</lastBuildDate>
+		<copyright>2020</copyright>
+		<pubDate>Mon, 01 Jun 2020 19:31:32 GMT</pubDate>
+		<lastBuildDate>Mon, 01 Jun 2020 19:31:32 GMT</lastBuildDate>
 	</channel>
 </rss>
