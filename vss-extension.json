@@ -24,16 +24,16 @@
   },
   "links": {
     "learn": {
-      "uri": "https://gep13.github.io/chocolatey-azuredevops/"
+      "uri": "https://chocolatey-community.github.io/chocolatey-azuredevops/"
     },
     "license": {
-      "uri": "https://github.com/gep13/chocolatey-azuredevops/blob/develop/LICENSE"
+      "uri": "https://github.com/chocolatey-community/chocolatey-azuredevops/blob/develop/LICENSE"
     },
     "repository": {
-      "uri": "https://github.com/gep13/chocolatey-azuredevops"
+      "uri": "https://github.com/chocolatey-community/chocolatey-azuredevops"
     },
     "support": {
-      "uri": "https://github.com/gep13/chocolatey-azuredevops/issues"
+      "uri": "https://github.com/chocolatey-community/chocolatey-azuredevops/issues"
     }
   },
   "screenshots": [
@@ -60,7 +60,7 @@
   ],
   "repository": {
     "type": "git",
-    "uri": "https://github.com/gep13/chocolatey-azuredevops"
+    "uri": "https://github.com/chocolatey-community/chocolatey-azuredevops"
   },
   "contributions": [
     {
@@ -72,11 +72,24 @@
       "properties": {
         "name": "Tasks/chocolatey"
       }
+    },
+    {
+      "id": "chocolatey-tool-installer-azuredevops",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "type": "ms.vss-distributed-task.task",
+      "properties": {
+        "name": "Tasks/installer"
+      }
     }
   ],
   "files": [
     {
       "path": "Tasks/chocolatey"
+    },
+    {
+      "path": "Tasks/installer"
     }
   ]
 }

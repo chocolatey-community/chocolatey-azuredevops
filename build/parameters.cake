@@ -97,7 +97,7 @@ public class BuildParameters
     {
         get
         {
-            return "@/all Version " + Version.SemVersion + " of the Chocolatey Azure DevOps Extension has just been released, https://marketplace.visualstudio.com/items?itemName=gep13.chocolatey-azuredevops.  Full release notes: https://github.com/gep13/chocolatey-azuredevops/releases/tag/" + Version.SemVersion;
+            return "@/all Version " + Version.SemVersion + " of the Chocolatey Azure DevOps Extension has just been released, https://marketplace.visualstudio.com/items?itemName=gep13.chocolatey-azuredevops.  Full release notes: https://github.com/chocolatey-community/chocolatey-azuredevops/releases/tag/" + Version.SemVersion;
         }
     }
 
@@ -105,7 +105,7 @@ public class BuildParameters
     {
         get
         {
-            return "Version " + Version.SemVersion + " of the Chocolatey Azure DevOps Extension has just been released, https://marketplace.visualstudio.com/items?itemName=gep13.chocolatey-azuredevops. @AzureDevOps @chocolateynuget #AzureDevOps #Azure  Full release notes: https://github.com/gep13/chocolatey-azuredevops/releases/tag/" + Version.SemVersion;
+            return "Version " + Version.SemVersion + " of the Chocolatey Azure DevOps Extension has just been released, https://marketplace.visualstudio.com/items?itemName=gep13.chocolatey-azuredevops. @AzureDevOps @chocolateynuget #AzureDevOps #Azure  Full release notes: https://github.com/chocolatey-community/chocolatey-azuredevops/releases/tag/" + Version.SemVersion;
         }
     }
 
@@ -144,7 +144,7 @@ public class BuildParameters
             IsRunningOnWindows = context.IsRunningOnWindows(),
             IsRunningOnAppVeyor = buildSystem.AppVeyor.IsRunningOnAppVeyor,
             IsPullRequest = buildSystem.AppVeyor.Environment.PullRequest.IsPullRequest,
-            IsMasterRepo = StringComparer.OrdinalIgnoreCase.Equals("gep13/chocolatey-azuredevops", buildSystem.AppVeyor.Environment.Repository.Name),
+            IsMasterRepo = StringComparer.OrdinalIgnoreCase.Equals("chocolatey-community/chocolatey-azuredevops", buildSystem.AppVeyor.Environment.Repository.Name),
             IsMasterBranch = StringComparer.OrdinalIgnoreCase.Equals("master", buildSystem.AppVeyor.Environment.Repository.Branch),
             IsDevelopBranch = StringComparer.OrdinalIgnoreCase.Equals("develop", buildSystem.AppVeyor.Environment.Repository.Branch),
             IsReleaseBranch = buildSystem.AppVeyor.Environment.Repository.Branch.StartsWith("release", StringComparison.OrdinalIgnoreCase),
@@ -186,14 +186,14 @@ public class BuildParameters
                 publishTarget => StringComparer.OrdinalIgnoreCase.Equals(publishTarget, target)
             ),
             SkipGitVersion = StringComparer.OrdinalIgnoreCase.Equals("True", context.EnvironmentVariable("CHOCOLATEYAZUREDEVOPS_SKIP_GITVERSION")),
-            WyamRootDirectoryPath = context.MakeAbsolute(context.Environment.WorkingDirectory),
+            WyamRootDirectoryPath = context.MakeAbsolute(context.Directory("docs")),
             WyamPublishDirectoryPath = context.MakeAbsolute(context.Directory("build-results/_PublishedDocumentation")),
             WyamConfigurationFile = context.MakeAbsolute((FilePath)"config.wyam"),
             WyamRecipe = "Docs",
             WyamTheme = "Samson",
-            WebHost = "gep13.github.io",
+            WebHost = "chocolatey-community.github.io",
             WebLinkRoot = "chocolatey-azuredevops",
-            WebBaseEditUrl = "https://github.com/gep13/chocolatey-azuredevops/tree/master/input/"
+            WebBaseEditUrl = "https://github.com/chocolatey-community/chocolatey-azuredevops/tree/develop/input/"
         };
     }
 }

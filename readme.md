@@ -41,7 +41,7 @@ Short YouTube videos of each of the releases of this extension can be found in t
 
 ## Documentation
 
-You can find the documentation that is available for this project [here](https://gep13.github.io/chocolatey-azuredevops/).
+You can find the documentation that is available for this project [here](https://chocolatey-community.github.io/chocolatey-azuredevops/).
 
 ## Thanks
 
@@ -49,10 +49,10 @@ The Chocolatey Azure DevOps Extension is modelled on the NuGet Extension, and ma
 
 ## Contributing
 
-If you would like to see any other tasks or features added for this Azure DevOps Extension, feel free to raise an [issue](https://github.com/gep13/chocolatey-azuredevops/issues), and if possible, a follow up pull request.
+If you would like to see any other tasks or features added for this Azure DevOps Extension, feel free to raise an [issue](https://github.com/chocolatey-community/chocolatey-azuredevops/issues), and if possible, a follow up pull request.
 
-You can also join in the Gitter Chat [![Join the chat at https://gitter.im/gep13/chocolatey-azuredevops](https://badges.gitter.im/gep13/chocolatey-azuredevops.svg)](https://gitter.im/gep13/chocolatey-azuredevops?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+You can also join in the Gitter Chat [![Join the chat at https://gitter.im/chocolatey-community/community](https://badges.gitter.im/chocolatey-community/community.svg)](https://gitter.im/chocolatey-community/community)
 
 ## Releases
 
-To find out what was released in each version of this extension, check out the [releases](https://github.com/gep13/chocolatey-azuredevops/releases) page.
+To find out what was released in each version of this extension, check out the [releases](https://github.com/chocolatey-community/chocolatey-azuredevops/releases) page.

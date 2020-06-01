@@ -19,7 +19,8 @@ try {
   $chocolateyVersion = & $chocoExe --version
   Write-Output "Running Chocolatey Version: $chocolateyVersion"
 
-  $chocolateyArguments = New-Object System.Collections.ArrayList
+  #Array list is deprecated, switch to a Generic and avoid the costly New-Object call
+  $chocolateyArguments = [System.Collections.Generic.List]::New()
 
   [bool]$debug = Get-VstsInput -Name 'debug' -AsBool -Default $false
   [bool]$verbose = Get-VstsInput -Name 'verbose' -AsBool -Default $false

@@ -16,7 +16,7 @@
 // TOOLS
 //////////////////////////////////////////////////////////////////////
 
-#tool "nuget:?package=gitreleasemanager&version=0.7.1"
+#tool "nuget:?package=gitreleasemanager&version=0.11.0"
 #tool "nuget:?package=GitVersion.CommandLine&version=3.6.4"
 #tool "nuget:?package=Wyam&version=1.7.4"
 #tool "nuget:?package=KuduSync.NET&version=1.4.0"
@@ -107,7 +107,7 @@ Task("Install-Tfx-Cli")
 {
     var settings = new NpmInstallSettings();
     settings.Global = true;
-    settings.AddPackage("tfx-cli", "0.6.3");
+    settings.AddPackage("tfx-cli", "0.7.11");
     settings.LogLevel = NpmLogLevel.Silent;
     NpmInstall(settings);
 });
@@ -115,7 +115,7 @@ Task("Install-Tfx-Cli")
 Task("Create-Release-Notes")
     .Does(() =>
 {
-    GitReleaseManagerCreate(parameters.GitHub.UserName, parameters.GitHub.Password, "gep13", "chocolatey-azuredevops", new GitReleaseManagerCreateSettings {
+    GitReleaseManagerCreate(parameters.GitHub.UserName, parameters.GitHub.Password, "chocolatey-community", "chocolatey-azuredevops", new GitReleaseManagerCreateSettings {
         Milestone         = parameters.Version.Milestone,
         Name              = parameters.Version.Milestone,
         Prerelease        = true,
@@ -123,17 +123,9 @@ Task("Create-Release-Notes")
     });
 });
 
-Task("Update-Json-Versions")
-    .Does(() =>
+Task("Update-Task-Json-Versions")
+    .DoesForEach(new [] {"Tasks/chocolatey/task.json", "Tasks/installer/task.json"}, taskJson =>
 {
-    var projectToPackagePackageJson = "vss-extension.json";
-    Information("Updating {0} version -> {1}", projectToPackagePackageJson, parameters.Version.SemVersion);
-
-    TransformConfig(projectToPackagePackageJson, projectToPackagePackageJson, new TransformationCollection {
-        { "version", parameters.Version.SemVersion }
-    });
-
-    var taskJson = "Tasks/chocolatey/task.json";
     Information("Updating {0} version -> {1}", taskJson, parameters.Version.SemVersion);
 
     TransformConfig(taskJson, taskJson, new TransformationCollection {
@@ -149,8 +141,20 @@ Task("Update-Json-Versions")
     });
 });
 
+Task("Update-Manifest-Json-Version")
+    .Does(() =>
+{
+    var projectToPackagePackageJson = "vss-extension.json";
+    Information("Updating {0} version -> {1}", projectToPackagePackageJson, parameters.Version.SemVersion);
+
+    TransformConfig(projectToPackagePackageJson, projectToPackagePackageJson, new TransformationCollection {
+        { "version", parameters.Version.SemVersion }
+    });
+});
+
 Task("Package-Extension")
-    .IsDependentOn("Update-Json-Versions")
+    .IsDependentOn("Update-Manifest-Json-Version")
+    .IsDependentOn("Update-Task-Json-Versions")
     .IsDependentOn("Npm-Install")
     .IsDependentOn("Install-Tfx-Cli")
     .IsDependentOn("Clean")
@@ -182,8 +186,8 @@ Task("Publish-GitHub-Release")
     var buildResultDir = Directory("./build-results");
     var packageFile = File("gep13.chocolatey-azuredevops-" + parameters.Version.SemVersion + ".vsix");
 
-    GitReleaseManagerAddAssets(parameters.GitHub.UserName, parameters.GitHub.Password, "gep13", "chocolatey-azuredevops", parameters.Version.Milestone, buildResultDir + packageFile);
-    GitReleaseManagerClose(parameters.GitHub.UserName, parameters.GitHub.Password, "gep13", "chocolatey-azuredevops", parameters.Version.Milestone);
+    GitReleaseManagerAddAssets(parameters.GitHub.UserName, parameters.GitHub.Password, "chocolatey-community", "chocolatey-azuredevops", parameters.Version.Milestone, buildResultDir + packageFile);
+    GitReleaseManagerClose(parameters.GitHub.UserName, parameters.GitHub.Password, "chocolatey-community", "chocolatey-azuredevops", parameters.Version.Milestone);
 })
 .OnError(exception =>
 {
