@@ -3,10 +3,12 @@
 Trace-VstsEnteringInvocation $MyInvocation
 
 $chocoInstallLocation = [Environment]::GetEnvironmentVariable("ChocolateyInstall", "Machine")
-if(-not (Test-Path $chocoInstallLocation)) {
+if($chocoInstallLocation -and -not (Test-Path $chocoInstallLocation)) {
     Write-Output "Environment variable 'ChocolateyInstall' was not found in the system variables. Attempting to find it in the user variables..."
     $chocoInstallLocation = [Environment]::GetEnvironmentVariable("ChocolateyInstall", "User")
 }
+
+Write-Verbose "chocoInstallLocation: $chocoInstallLocation"
 
 $chocoExe = "$chocoInstallLocation\choco.exe"
 
