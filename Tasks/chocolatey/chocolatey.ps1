@@ -144,7 +144,7 @@ try {
         $chocolateyArguments.Add("--package-parameters=`"'$installParams'`"") > $null
       }
 
-      $chocolateyArguments.Insert(0, $installPackageId) > $null
+      $chocolateyArguments.InsertRange(0, ($installPackageId).Split(' ')) > $null
       $commandName = "install"
     }
     "pack"
@@ -330,7 +330,7 @@ try {
         $chocolateyArguments.Add("--package-parameters=`"'$upgradeParams'`"") > $null
       }
 
-      $chocolateyArguments.Insert(0, $upgradePackageId) > $null
+      $chocolateyArguments.InsertRange(0, ($upgradePackageId).Split(' ')) > $null
       $commandName = "upgrade"
     }
   }
