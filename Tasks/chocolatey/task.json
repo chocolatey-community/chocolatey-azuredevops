@@ -269,7 +269,7 @@
       "label": "The id of the package(s) that are to be installed.",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "For example, windirstat.",
+      "helpMarkDown": "For example, `windirstat`, or `jre8 urlrewrite`.",
       "groupName": "installOptions"
     },
     {
@@ -580,7 +580,7 @@
       "label": "The id of the package(s) that are to be installed.",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "For example, windirstat.",
+      "helpMarkDown": "For example, `windirstat`, or `jre8 urlrewrite`.",
       "groupName": "upgradeOptions"
     },
     {
